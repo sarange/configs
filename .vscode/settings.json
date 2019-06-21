@@ -1,0 +1,28 @@
+/*
+ * File: /home/sarange/.config/i3/.vscode/settings.json
+ * Project: /home/sarange/.config/i3/.vscode
+ * Created Date: Monday, June 17th 2019, 1:33:21 pm
+ * Author: sarange
+ * -----
+ * Last Modified: Mon Jun 17 2019
+ * Modified By: sarange
+ * -----
+ * Copyright (c) 2019 sarange
+ * 
+ * Talk is cheap. Show me the code.
+ */
+
+{
+    "python.pythonPath": "/home/sarange/.virtualenvs/i3/bin/python",
+    "python.envFile": "/home/sarange/.virtualenvs/i3/bin/python",
+    "psi-header.lang-config": [
+        {
+            "language": "python",
+            "blankLinesAfter": 0,
+            "beforeHeader": [
+                "#!/home/sarange/.virtualenvs/i3/bin/python",
+                "# -*- coding:utf-8 -*-"
+            ]
+        }
+    ]
+}

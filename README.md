@@ -1,0 +1,1 @@
+***This is a repository where I keep my zshrc, i3, polybar, i3blocks (old) and various scripts that they use.***
