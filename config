@@ -263,12 +263,13 @@ bindsym --release $sup+p exec escrotum -s -C
 # applications
 # exec --no-startup-id viber
 # exec --no-startup-id nm-applet
-exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
 exec --no-startup-id compton --config ~/.config/i3/compton.conf
 exec --no-startup-id keepassxc
 exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
 exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox -P Default'
+exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
+
 
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3?' -B 'Yes' 'i3-msg exit'"

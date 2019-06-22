@@ -5,7 +5,7 @@
 # Created Date: Monday, June 17th 2019, 10:42:55 am
 # Author: sarange
 # -----
-# Last Modified: Mon Jun 17 2019
+# Last Modified: Fri Jun 21 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -26,7 +26,7 @@ fi
 updates=$(("$updates_arch" + "$updates_aur"))
 
 if [ "$updates" -gt 0 ]; then
-    echo " $updates"
+    echo " $updates_arch:$updates_aur"
 else
-    echo " $updates"
+    echo ""
 fi

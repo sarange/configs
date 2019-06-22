@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Fri Jun 21 2019
+# Last Modified: Sat Jun 22 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -24,15 +24,15 @@ adapta-yellow = #C9BC0E
 adapta-lightgreen = #4DB6AC
 adapta-green = #009688
 adapta-grey = #475359
-# fg = ${colors.foreground}
-# fg-a = ${colors.foreground-alt}
+# bg-a = ${colors.background-alt}
 bg-a = ${colors.background-alt}
-# bg = ${colors.background}
-bg = #6F000000
+bg = ${colors.background}
+# bg = #FF000000
+# fg = ${colors.foreground}
 fg = ${colors.foreground}
-fg-a = #475359
+# fg-a = ${colors.foreground-alt}
+fg-a = #9f009688
  
-
 
 [margin]
 for-modules = 1
@@ -84,22 +84,15 @@ label-unfocused-underline = ${colors.bg}
 
 label-urgent = %icon%
 label-urgent-background = ${colors.bg}
-label-urgent-foreground = ${colors.fg-a}
+label-urgent-foreground = ${colors.adapta-red}
 label-urgent-padding = 3
-label-urgent-underline = ${colors.bg}
+label-urgent-underline = ${colors.adapta-red}
 
 # label-visible = %output%
 label-visible-background = ${colors.bg}
 label-visible-foreground = ${colors.fg}
 label-visible-padding = 3
 label-visible-underline = ${colors.bg}
-
-# ws-icon-0 = 1;♚
-# ws-icon-1 = 2;♛
-# ws-icon-2 = 3;♜
-# ws-icon-3 = 4;♝
-# ws-icon-4 = 5;♞
-# ws-icon-default = ♟
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
@@ -149,11 +142,11 @@ bar-progress-empty-foreground = ${colors.fg}
 [module/date]
 type = internal/date
 interval = 5
-date = "%a %d %b,"
-date-alt = "%d/%m/%y"
+date = " %a %d %b,"
+date-alt = " %d/%m/%y"
 time = "%H:%M"
-time-alt = %H:%M
-label = %date% %time%
+time-alt = " %H:%M"
+label = "%date% %time%"
 label-background = ${colors.bg}
 label-foreground = ${colors.fg}
 label-underline = ${colors.fg-a}
@@ -166,9 +159,9 @@ type = internal/alsa
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume = <bar-volume>  <label-volume>
-label-volume = "%percentage%"
-label-muted = Muted
+format-volume = <bar-volume> <label-volume>
+label-volume = " %percentage%%"
+label-muted = "  Muted "
 # use-ui-max = false
 
 ; Only applies if <ramp-volume> is used
@@ -180,14 +173,14 @@ ramp-volume-4 = 
 
 label-volume-foreground = ${colors.fg}
 
-bar-volume-indicator = 
+bar-volume-indicator = ┃
 bar-volume-width = 7
 bar-volume-foreground-0 = ${colors.fg}
 bar-volume-foreground-1 = ${colors.fg}
 bar-volume-foreground-2 = ${colors.adapta-red}
-bar-volume-fill = ◾
-bar-volume-empty = ◾
-bar-volume-empty-foreground = #444444
+bar-volume-fill = ─
+bar-volume-empty = ─
+bar-volume-empty-foreground = #707044
 format-muted-foreground = ${colors.fg}
 label-muted-foreground = ${colors.fg}
 label-muted-background = ${colors.adapta-red}
@@ -249,20 +242,11 @@ format-padding = 1
 
 [module/ip]
 type = custom/script
-interval = 2
+interval = 1
 format = "<label>"
-format-prefix-foreground = ${colors.fg-a}
-format-prefix-background = ${colors.bg-a}
-exec = echo "$(dig +short myip.opendns.com @resolver1.opendns.com)"
-exec-if = ping -c 1 gentoo.org
-
-[module/ipDns]
-type = custom/script
-interval = 30
-# format = "<label>"
-exec = ~/.config/i3/scripts/ipDns.py auto
-click-left = ~/.config/i3/scripts/ipDns.py
-click-right = ~/.config/i3/scripts/ipVpn.py change
+exec = ~/.config/i3/scripts/ip.py auto
+click-left = ~/.config/i3/scripts/ip.py rmtime
+click-right = ~/.config/i3/scripts/ip.py change
 format-background = ${colors.bg}
 format-foreground = ${colors.fg}
 format-padding = 2
@@ -366,7 +350,8 @@ interval = 2
 ;   <bar-swap-free>
 ;   <ramp-swap-used>
 ;   <ramp-swap-free>
-format = "<ramp-swap-used>"
+# format = " <bar-used>  <ramp-swap-used>"
+format = " <bar-used>"
 
 ramp-swap-used-0 = ▁
 ramp-swap-used-1 = ▂
@@ -377,14 +362,15 @@ ramp-swap-used-5 = ▆
 ramp-swap-used-6 = ▇
 ramp-swap-used-7 = █
 ramp-swap-used-0-foreground = ${colors.fg}
-ramp-swap-used-1-foreground = ${colors.fg}
-ramp-swap-used-2-foreground = ${colors.adapta-lightgreen}
-ramp-swap-used-3-foreground = ${colors.adapta-green}
-ramp-swap-used-4-foreground = ${colors.adapta-yellow}
-ramp-swap-used-5-foreground = ${colors.adapta-yellow}
+ramp-swap-used-1-foreground = ${colors.adapta-lightgreen}
+ramp-swap-used-2-foreground = ${colors.adapta-green}
+ramp-swap-used-3-foreground = ${colors.adapta-yellow}
+ramp-swap-used-4-foreground = ${colors.adapta-red}
+ramp-swap-used-5-foreground = ${colors.adapta-red}
 ramp-swap-used-6-foreground = ${colors.adapta-red}
 ramp-swap-used-7-foreground = ${colors.adapta-red}
 ramp-swap-used-font = 3
+ramp-swap-used-underline = ${colors.fg-a}
 
 ; Available tokens:
 ;   %percentage_used% (default)
@@ -408,12 +394,16 @@ label = " %gb_used% / %gb_total%"
 
 
 ; Only applies if <bar-used> is used
-bar-used-indicator =
+
+bar-used-indicator = ┃
 bar-used-width = 7
-bar-used-foreground-0 = ${colors.fg}
-bar-used-fill = ▐
-bar-used-empty = ▐
-bar-used-empty-foreground = #444444
+bar-used-fill = ─
+bar-used-empty = ─
+bar-used-empty-foreground = #707044
+bar-used-underline = ${colors.fg-a}
+bar-used-foreground-0 = ${colors.adapta-green}
+bar-used-foreground-1 = ${colors.adapta-yellow}
+bar-used-foreground-2 = ${colors.adapta-red}
 
 ; Only applies if <ramp-used> is used
 ramp-used-0 = ▁
@@ -458,31 +448,26 @@ format-padding = 1
 format-prefix-foreground = ${colors.fg-a}
 format-background = ${colors.bg}
 exec = ~/.config/i3/scripts/weather.sh -i
-
+click-left = ~/.config/i3/scripts/weather.sh -i
+click-right = ~/.config/i3/scripts/weather.sh -i -f
 
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = " "
+format-prefix = " "
 format = <label>
-exec = python ~/.config/i3/scripts/spotify_status.py -f '{artist}: {song}'
-format-underline = #1db954
-
-; vim:ft=dosini
-
-[module/cpu-value]
-type = internal/cpu
-interval = 0.1
-format-prefix = " "
+exec = python ~/.config/i3/scripts/spotify_status.py -f '{artist} - {song} {play_pause}' -p ',' -t '10'
+click-left = 
+format-background = ${colors.bg}
+format-foreground = ${colors.fg}
 format-underline = ${colors.fg-a}
-format-margin = ${margin.for-modules}
 format-padding = 1
-label = %percentage:2%%
+label = %output%
 
 [module/cpu-graph]
 type = internal/cpu
 interval = 0.08
-format = "<ramp-coreload>"
+format = " <ramp-coreload>"
 format-margin = ${margin.for-modules}
 ramp-coreload-0 = ▁
 ramp-coreload-0-foreground = ${colors.fg}
@@ -501,7 +486,6 @@ ramp-coreload-6-foreground = ${colors.adapta-red}
 ramp-coreload-7 = █
 ramp-coreload-7-foreground = ${colors.adapta-red}
 ramp-coreload-font = 3
-
 format-background = ${colors.bg}
 format-foreground = ${colors.fg}
 format-underline = ${colors.fg-a}
@@ -509,15 +493,15 @@ format-padding = 1
 
 [module/keymap]
 type = custom/script
-command=xkb-switch -n;echo 
-interval=0
-full_text=
-
-[module/keymapshow]
-type = custom/script
-exec = bash -c 'xkb-switch;xkb-switch -W'
-interval = persist
-format = <label>
+format-prefix = "  "
+format = "<label>"
+click-left = xkb-switch -n
+exec = bash -c "xkb-switch"
+interval = 0.3
+format-background = ${colors.bg}
+format-foreground = ${colors.fg}
+format-padding = 2
+format-underline = ${colors.fg-a}
 
 [module/uptime]
 type = custom/script
@@ -570,7 +554,7 @@ unknown-as-up = true
 ; Available tags:
 ;   <label-connected> (default)
 ;   <ramp-signal>
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 
 format-connected-background = ${colors.bg}
 format-connected-foreground = ${colors.fg}
@@ -597,7 +581,7 @@ format-disconnected = <label-disconnected>
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
-label-connected = "%downspeed:8% %upspeed:8%"
+label-connected = "%downspeed:8% | %upspeed:8%"
 ;;label-connected-foreground = #eefafafa
 
 ; Available tokens:

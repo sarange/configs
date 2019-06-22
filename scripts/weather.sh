@@ -8,17 +8,18 @@
 # Cheers!
 # Addy
 
-IP=$(curl -s http://whatismyip.akamai.com/)
+if  [[ $2 = "-f" ]]; then
+	IP=$(curl -s http://whatismyip.akamai.com/)
 
-# Get longitude and latitude based on ip
-GEO_LOCATION=$(jq -r '.loc' <<< $(curl -s "ipinfo.io/${IP}"))
-IFS=',' read -ra LONGLAT <<< "$GEO_LOCATION"
-LAT="${LONGLAT[0]}"
-LON="${LONGLAT[1]}"
-
-echo $LON
-echo $LAT
-
+	# Get longitude and latitude based on ip
+	GEO_LOCATION=$(jq -r '.loc' <<< $(curl -s "ipinfo.io/${IP}"))
+	IFS=',' read -ra LONGLAT <<< "$GEO_LOCATION"
+	LAT="${LONGLAT[0]}"
+	LON="${LONGLAT[1]}"
+else
+	LON=23.8000
+	LAT=38.0500
+fi
 # Open Weather Map API code, register to http://openweathermap.org to get one ;)
 API_KEY="365a6f3a274bba21cabdbee0aa44e99f"
 

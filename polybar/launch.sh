@@ -1,11 +1,11 @@
-#!/usr/bin/zsh
+#!/usr/bin/bash
 #####
 # File: /home/sarange/.config/i3/polybar/launch.sh
 # Project: /home/sarange/.config/i3/polybar
 # Created Date: Monday, June 17th 2019, 12:39:47 am
 # Author: sarange
 # -----
-# Last Modified: Thu Jun 20 2019
+# Last Modified: Sat Jun 22 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange

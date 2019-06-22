@@ -18,7 +18,7 @@ import subprocess, os, sys
 sys.path.append('/home/sarange/.config/i3/scripts/')
 from dnsleaktest import main as dns
 from myvpn import main as m
-import ipDns
+import ipVpn
 import datetime, time
 
 def main():
@@ -26,18 +26,18 @@ def main():
 	out1 = str(wget)[2:-3]
 	output = m()
 	if output == 'VPN Down':
-		output = f' {out1}'
+		output = f' {out1}'
 		code = 0
 	else:
 		dnsOutput = dns(True)
 		if 'DNS may be leaking' in dnsOutput:
-			output = f' {out1}'
+			output = f' {out1}'
 			code = 33
 			with open('/home/sarange/.config/i3/dns.log', 'a') as f:
 				timestamp = datetime.datetime.now()
 				f.write(f'{dnsOutput}\n{timestamp}')
 		else:
-			output = f' {out1}'
+			output = f' {out1}'
 			code = 0
 	return output, code
 
@@ -54,17 +54,24 @@ if __name__ == '__main__':
 	enter = True
 	try:
 		if sys.argv[1] == 'change':
-			ipDns.main()
+			ipVpn.main()
+			open('/home/sarange/.config/i3/lastDnsTest.log', 'w').write('0')
+			enter = False
 		elif sys.argv[1] == 'auto':
-			ntime = open('/home/sarange/.config/i3/lastDnsTest.log', 'r').read()
-			waittime = 29
+			ntime = open('/home/sarange/.config/i3/lastDnsTest.log', 'r').read().split('\n')[0]
+			waittime = 60
 			if float(ntime) + waittime > time.time():
 				enter = False
+		elif sys.argv[1] == 'rmtime':
+			open('/home/sarange/.config/i3/lastDnsTest.log', 'w').write('0')
+			enter = False
 	except:
 		pass
 	if enter:
 		waitForConnection()
 		output, code = main()
 		print(output)
-		open('/home/sarange/.config/i3/lastDnsTest.log', 'w').write(str(time.time()))
+		open('/home/sarange/.config/i3/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
 		exit(code)
+	else:
+		print(open('/home/sarange/.config/i3/lastDnsTest.log', 'r').read().split('\n')[1])
