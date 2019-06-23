@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Sat Jun 22 2019
+# Last Modified: Sun Jun 23 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -325,10 +325,10 @@ ramp-foreground = #55
 
 [module/pkg]
 type = custom/script
-exec = bash ~/.config/i3/scripts/checkupdates.sh
+exec = ~/.config/i3/scripts/checkUpdates.py
 tail = true
 ;format-margin = ${margin.for-modules}
-# click-left = bash ~/.config/i3/scripts/updates.sh
+click-left = ~/.config/i3/scripts/floating.sh
 format-background = ${colors.bg}
 format-foreground = ${colors.fg}
 format-underline = ${colors.fg-a}
@@ -400,10 +400,11 @@ bar-used-width = 7
 bar-used-fill = ─
 bar-used-empty = ─
 bar-used-empty-foreground = #707044
-bar-used-underline = ${colors.fg-a}
 bar-used-foreground-0 = ${colors.adapta-green}
 bar-used-foreground-1 = ${colors.adapta-yellow}
 bar-used-foreground-2 = ${colors.adapta-red}
+
+
 
 ; Only applies if <ramp-used> is used
 ramp-used-0 = ▁
