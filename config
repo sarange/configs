@@ -4,7 +4,7 @@
 # Created Date: Sunday, June 16th 2019, 9:07:27 pm
 # Author: sarange
 # -----
-# Last Modified: Fri Jun 21 2019
+# Last Modified: Sun Jun 23 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -263,12 +263,12 @@ bindsym --release $sup+p exec escrotum -s -C
 # applications
 # exec --no-startup-id viber
 # exec --no-startup-id nm-applet
-exec --no-startup-id compton --config ~/.config/i3/compton.conf
 exec --no-startup-id keepassxc
 exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
 exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox -P Default'
 exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
+exec_always --no-startup-id compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
 
 
 # exit i3 (logs you out of your X session)

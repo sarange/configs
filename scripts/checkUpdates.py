@@ -19,18 +19,24 @@ from subprocess import check_output
 def main():
     kernel = ''
     with open('/dev/null', 'w') as NULL:
-        pacman = str(check_output(['checkupdates'], stderr=NULL))[2:-1]
-        aur = str(check_output(['yay','-Qum'], stderr=NULL))[2:-1]
+        problem = True
+        while problem:
+            try:
+                pacman = str(check_output(['checkupdates'], stderr=NULL))[2:-1]
+                aur = str(check_output(['yay','-Qum'], stderr=NULL))[2:-1]
+                problem = False
+            except:
+                problem = True
     if pacman == '' and aur == '':
-        print('')
+        print('')
     else:
-        if 'linux' in pacman:
-            kernel = ''
+        if 'linux-' in pacman:
+            kernel = ''
         else:
-            kernel = ''
+            kernel = ''
         lpacman = len(pacman.split('\\n')) - 1
         laur = len(aur.split('\n')) - 1
-        print(f' {lpacman}:{laur} {kernel}')
+        print(f'{kernel} {lpacman}|{laur}')
 
 if __name__ == '__main__':
     main()

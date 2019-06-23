@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Saturday, June 15th 2019, 3:50:36 pm
 Author: sarange
 -----
-Last Modified: Fri Jun 21 2019
+Last Modified: Sun Jun 23 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -17,27 +17,31 @@ Talk is cheap. Show me the code.
 import subprocess, os, sys
 sys.path.append('/home/sarange/.config/i3/scripts/')
 from dnsleaktest import main as dns
-from myvpn import main as m
-import ipVpn
+import vpn
 import datetime, time
 
 def main():
 	wget = subprocess.check_output(('wget', '-qO', '-', 'icanhazip.com'))
-	out1 = str(wget)[2:-3]
-	output = m()
+	icanhazip = str(wget)[2:-3]
+	try:
+		int(icanhazip.replace('.', ''))
+	except Exception as error:
+		print('icanhazip.com didn\'t return an ip')
+		exit()
+	output = vpn.detect()
 	if output == 'VPN Down':
-		output = f' {out1}'
+		output = f' {icanhazip}'
 		code = 0
 	else:
 		dnsOutput = dns(True)
 		if 'DNS may be leaking' in dnsOutput:
-			output = f' {out1}'
+			output = f' {icanhazip}'
 			code = 33
-			with open('/home/sarange/.config/i3/dns.log', 'a') as f:
+			with open('/home/sarange/.config/i3/logs/dns.log', 'a') as f:
 				timestamp = datetime.datetime.now()
 				f.write(f'{dnsOutput}\n{timestamp}')
 		else:
-			output = f' {out1}'
+			output = f' {icanhazip}'
 			code = 0
 	return output, code
 
@@ -54,16 +58,16 @@ if __name__ == '__main__':
 	enter = True
 	try:
 		if sys.argv[1] == 'change':
-			ipVpn.main()
-			open('/home/sarange/.config/i3/lastDnsTest.log', 'w').write('0')
+			vpn.change()
+			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
 			enter = False
 		elif sys.argv[1] == 'auto':
-			ntime = open('/home/sarange/.config/i3/lastDnsTest.log', 'r').read().split('\n')[0]
+			ntime = open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'r').read().split('\n')[0]
 			waittime = 60
 			if float(ntime) + waittime > time.time():
 				enter = False
 		elif sys.argv[1] == 'rmtime':
-			open('/home/sarange/.config/i3/lastDnsTest.log', 'w').write('0')
+			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
 			enter = False
 	except:
 		pass
@@ -71,7 +75,10 @@ if __name__ == '__main__':
 		waitForConnection()
 		output, code = main()
 		print(output)
-		open('/home/sarange/.config/i3/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
+		open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
 		exit(code)
 	else:
-		print(open('/home/sarange/.config/i3/lastDnsTest.log', 'r').read().split('\n')[1])
+		try:
+			print(open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'r').read().split('\n')[1])
+		except:
+			pass

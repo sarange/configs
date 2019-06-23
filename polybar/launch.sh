@@ -5,7 +5,7 @@
 # Created Date: Monday, June 17th 2019, 12:39:47 am
 # Author: sarange
 # -----
-# Last Modified: Sat Jun 22 2019
+# Last Modified: Sun Jun 23 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -20,5 +20,5 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch polybar
-polybar -c ~/.config/i3/polybar/config bottom -r &
-polybar -c ~/.config/i3/polybar/config top -r &
+polybar -c ~/.config/i3/polybar/config top -r 2>> ~/.config/i3/logs/top.log &
+polybar -c ~/.config/i3/polybar/config bottom -r 2>> ~/.config/i3/logs/bottom.log &
