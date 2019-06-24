@@ -5,7 +5,7 @@
 # Created Date: Sunday, June 23rd 2019, 4:06:03 pm
 # Author: sarange
 # -----
-# Last Modified: Sun Jun 23 2019
+# Last Modified: Mon Jun 24 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -13,7 +13,7 @@
 # Talk is cheap. Show me the code.
 #####
 
-konsole -e yay &
+konsole -e "$@" &
 
 pid="$!"
 

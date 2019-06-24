@@ -4,7 +4,7 @@
 # Created Date: Sunday, June 16th 2019, 9:07:27 pm
 # Author: sarange
 # -----
-# Last Modified: Sun Jun 23 2019
+# Last Modified: Mon Jun 24 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -30,12 +30,30 @@ font pango:Font Awesome 5 Free Regular 10px
 font pango:Font Awesome 5 Free Solid 10px
 font pango:Font Awesome 5 Brands 11px
 
-# set colors
-set $bg-color            #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #ffffff
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+# # set colors
+# set $bg-color            #2f343f
+# set $inactive-bg-color   #2f343f
+# set $text-color          #ffffff
+# set $inactive-text-color #676E7D
+# set $urgent-bg-color     #E53935
+
+# pywal
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 # drag windows
 floating_modifier $mod
@@ -48,7 +66,7 @@ bindsym $mod+Shift+q kill
 
 # start a program launcher
 # bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun -sidebar-mode -theme 'android_notification'"
-bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun -display-drun ' ' -display-run ' '"
+bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun -display-drun ' ' -display-run ' ' -c ~/.config/i3/rofi.conf"
 
 # change focus
 bindsym $mod+j focus left
@@ -245,7 +263,7 @@ set $wallpaper-num 44
 
 # Get POTD form bing  
 # locales: ar-XA, bg-BG, cs-CZ, da-DK, de-AT, de-CH, de-DE, el-GR, en-AU, en-CA, en-GB, en-ID, en-IE, en-IN, en-MY, en-NZ, en-PH, en-SG, en-US, en-XA, en-ZA, es-AR, es-CL, es-ES, es-MX, es-US, es-XL, et-EE, fi-FI, fr-BE, fr-CA, fr-CH, fr-FR, he-IL, hr-HR, hu-HU, it-IT, ja-JP, ko-KR, lt-LT, lv-LV, nb-NO, nl-BE, nl-NL, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sl-SL, sv-SE, th-TH, tr-TR, uk-UA, zh-CN, zh-HK, zh-TW
-exec_always ~/.config/i3/scripts/potd.py -r 1920x1080 -l en-US -n
+# exec ~/.config/i3/scripts/potd.py -r 1920x1080 -l en-US -n
 
 
 # activate vpn
@@ -267,12 +285,18 @@ exec --no-startup-id keepassxc
 exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
 exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox -P Default'
+# Load Xresources before Polybar
+# exec_always --no-startup-id xrdb -load ~/.config/i3/Xresources 
+# Launch Polybar
+exec_always --no-startup-id ~/.config/i3/scripts/setWal.py
 exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
+# Kill compton if it's running and start it again 
+exec_always killall compton
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
 
 
 # exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3?' -B 'Yes' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3?' -B 'Yes' 'i3-msg exit'"
 
 
 # Exit Prompt 

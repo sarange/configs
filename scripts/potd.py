@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Thursday, June 13th 2019, 5:34:19 pm
 Author: sarange
 -----
-Last Modified: Mon Jun 17 2019
+Last Modified: Mon Jun 24 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -39,7 +39,8 @@ def getNasa(dirname, locale, resolution):
     return filename, url
 
 def setWallpapper(photo):
-    call(f'feh --bg-fill {photo}'.split(' '))
+    # feh --bg-fill
+    call(f'wal -i {photo}'.split(' '))
 
 def waitForConnection():
     import requests
