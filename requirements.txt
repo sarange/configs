@@ -38,6 +38,7 @@ Pygments==2.4.2
 PyGObject==3.32.1
 pyrsistent==0.15.2
 python-dateutil==2.8.0
+pywal==3.3.0
 pyzmq==18.0.1
 qtconsole==4.5.1
 requests==2.22.0
