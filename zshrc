@@ -123,9 +123,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Old zshrc
-export USE_CCACHE=1
+# export USE_CCACHE=1
 export EDITOR=vim
 export HISTCONTROL=ignorespace
+
 # New
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
@@ -137,8 +138,6 @@ bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 bindkey "^d" backward-kill-line # Ctrl+D
 bindkey "^H" backward-delete-word # Ctrl+Bksp
-
-# Source Xresourses
 
 alias nlu="nmcli con up 'ProtonVPN Netherlands 1'"
 alias nld="nmcli con down 'ProtonVPN Netherlands 1'"

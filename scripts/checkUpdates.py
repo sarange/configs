@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Sunday, June 23rd 2019, 1:29:08 pm
 Author: sarange
 -----
-Last Modified: Mon Jun 24 2019
+Last Modified: Tue Jun 25 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -17,29 +17,35 @@ import shlex
 from subprocess import check_output
 
 def main(lst=False):
-    kernel = ''
+    icon = ''
     with open('/dev/null', 'w') as NULL:
         problem = True
         while problem:
             try:
-                pacman = str(check_output(['checkupdates'], stderr=NULL))[2:-1]
-                aur = str(check_output(['yay','-Qum'], stderr=NULL))[2:-1]
+                pacman = str(check_output(['checkupdates'], stderr=NULL))[2:-1].replace('\\n', '\n')
+                aur = str(check_output(['yay','-Qum'], stderr=NULL))[2:-1].replace('\\n', '\n')
                 problem = False
             except:
                 problem = True
-    if pacman == '' and aur == '':
-        return ''
-    elif not lst:
-        if 'linux-' in pacman:
-            kernel = ''
+    if not lst:
+        if pacman == '' and aur == '':
+            return ''
         else:
-            kernel = ''
-        lpacman = len(pacman.split('\\n')) - 1
-        laur = len(aur.split('\n')) - 1
-        return f'{kernel} {lpacman}|{laur}'
+            if 'linux-' in pacman:
+                icon = ''
+            else:
+                icon = ''
+            lpacman = len(pacman.split('\n')) - 1
+            laur = len(aur.split('\n')) - 1
+            return f'{icon} {lpacman}|{laur}'
     else:
-        with open('/home/sarange/.config/i3/logs/updates.log', 'w') as updates:
-            updates.write(f'Pacman: {pacman}AUR: {aur}')
+        with open('/home/sarange/.config/i3/logs/updates.log', 'w') as file:
+            update = ''
+            if not pacman == '':
+                update += f'Pacman:\n{pacman}\n'
+            if not aur == '':
+                update += f'AUR:\n{aur}'
+            file.write(update)
 
 if __name__ == '__main__':
     import sys

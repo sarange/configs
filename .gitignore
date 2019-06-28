@@ -1,6 +1,5 @@
-tmp
-__pycache__
+tmp/
+__pycache__/
+logs/
+wallpapers/
 apiKey
-dns.log
-logs
-wallpapers

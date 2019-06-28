@@ -4,7 +4,7 @@
 # Created Date: Sunday, June 16th 2019, 9:07:27 pm
 # Author: sarange
 # -----
-# Last Modified: Mon Jun 24 2019
+# Last Modified: Tue Jun 25 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -253,7 +253,16 @@ bindsym $sup+q exec amixer -q -D pulse sset Master 5%-
 bindsym $sup+w exec amixer -q -D pulse sset Master 5%+
 bindsym $sup+e exec amixer -D pulse set Master 1+ toggle
 
-set $wallpaper-num 44
+# Load Xresources before Polybar
+# exec_always --no-startup-id xrdb -load ~/.config/i3/Xresources 
+# Launch Polybar
+exec_always --no-startup-id ~/.config/i3/scripts/setWal.py
+exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
+# Kill compton if it's running and start it again 
+exec_always killall compton
+exec_always --no-startup-id compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
+
+# set $wallpaper-num 44
 
 # SHUFFLE (screens and wallpaper 1 screen)
 # exec_always feh --bg-fill ~/.local/share/wallpapers/$(shuf -i1-$wallpaper-num -n1).*
@@ -285,14 +294,6 @@ exec --no-startup-id keepassxc
 exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
 exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox -P Default'
-# Load Xresources before Polybar
-# exec_always --no-startup-id xrdb -load ~/.config/i3/Xresources 
-# Launch Polybar
-exec_always --no-startup-id ~/.config/i3/scripts/setWal.py
-exec_always --no-startup-id ~/.config/i3/polybar/launch.sh
-# Kill compton if it's running and start it again 
-exec_always killall compton
-exec_always --no-startup-id compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
 
 
 # exit i3 (logs you out of your X session)

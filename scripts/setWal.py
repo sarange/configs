@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Monday, June 24th 2019, 3:24:32 pm
 Author: sarange
 -----
-Last Modified: Mon Jun 24 2019
+Last Modified: Sat Jun 29 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -20,7 +20,8 @@ def setWall(photo):
 
 def findMax(path):
     from os import listdir
-    setWall(f'{path}/{max(listdir(path))}')
+    setWall(f'{path}/{max(listdir(path), key=lambda x : int(x[:-4]))}')
+
 
 if __name__ == '__main__':
     import sys
