@@ -5,7 +5,7 @@
 # Created Date: Sunday, June 16th 2019, 2:51:06 pm
 # Author: sarange
 # -----
-# Last Modified: Mon Jun 24 2019
+# Last Modified: Sat Jun 29 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -151,3 +151,4 @@ alias htb='cd ~/Documents/PenTest/hackthebox/'
 alias wallpshuf='feh --bg-fill ~/.local/share/wallpapers/$(shuf -i1-49 -n1).*'
 alias wallppotd='~/.config/i3/scripts/potd.py'
 alias setwall='~/.config/i3/scripts/setWal.py'
+alias qrcode='~/.config/i3/scripts/qrcode.sh'

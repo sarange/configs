@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/polybar
 Created Date: Monday, June 17th 2019, 12:36:52 am
 Author: sarange
 -----
-Last Modified: Sat Jun 22 2019
+Last Modified: Mon Jul 01 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -44,8 +44,8 @@ def main():
 	ending = ''
 	for currency in currencies.split(','):
 		if not first:
-			ending = ' | '
-		output += f"{ending}{currency}: {round(data[currency]['quote']['EUR']['price'])}, {data[currency]['quote']['EUR']['percent_change_24h']}% "
+			ending = '  '
+		output += f"{ending}{currency}: {round(data[currency]['quote']['EUR']['price'])} {data[currency]['quote']['EUR']['percent_change_24h']}% "
 		first = False
 	return output
 

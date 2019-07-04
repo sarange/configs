@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Saturday, June 15th 2019, 3:50:36 pm
 Author: sarange
 -----
-Last Modified: Sun Jun 23 2019
+Last Modified: Sat Jun 29 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -60,11 +60,20 @@ if __name__ == '__main__':
 		if sys.argv[1] == 'change':
 			vpn.change()
 			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
+			print('')
+			enter = False
+		elif sys.argv[1] == 'changeCustom':
+			vpnNum = open('/home/sarange/.config/i3/logs/vpnNum.log', 'r').read().split('\n')[0]
+			vpn.change(vpnNum=vpnNum)
+			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
+			open('/home/sarange/.config/i3/logs/vpnNum.log', 'w').write('')
+			print('')
 			enter = False
 		elif sys.argv[1] == 'auto':
 			ntime = open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'r').read().split('\n')[0]
 			waittime = 60
-			if float(ntime) + waittime > time.time():
+			until = time.time() - float(ntime)
+			if waittime > until:
 				enter = False
 		elif sys.argv[1] == 'rmtime':
 			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
@@ -74,11 +83,12 @@ if __name__ == '__main__':
 	if enter:
 		waitForConnection()
 		output, code = main()
-		print(output)
+		print(f'{output} ')
 		open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
 		exit(code)
 	else:
 		try:
-			print(open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'r').read().split('\n')[1])
+			t = open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'r').read().split('\n')
+			print(f'{t[1]} {int(until//1)}')
 		except:
 			pass

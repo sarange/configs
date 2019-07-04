@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Tue Jun 25 2019
+# Last Modified: Sun Jun 30 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -218,12 +218,15 @@ label-close-foreground = ${colors.foreground-alt}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = 
-menu-0-0-exec = killall firefox &&  systemctl reboot
-menu-0-1 = 
-menu-0-1-exec = systemctl suspend
-menu-0-2 = 
-menu-0-2-exec = systemctl poweroff
+menu-0-0 = 
+menu-0-0-exec = i3lock-fancy-rapid 5 5 && sleep 1
+menu-0-1 = 
+menu-0-1-exec = systemctl reboot
+menu-0-2 = 
+menu-0-2-exec = i3lock-fancy-rapid 5 5 && sleep 1 && systemctl suspend
+menu-0-3 = 
+menu-0-3-exec = systemctl poweroff
+
 
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
@@ -237,6 +240,7 @@ format = "<label>"
 exec = ~/.config/i3/scripts/ip.py auto
 click-left = ~/.config/i3/scripts/ip.py rmtime
 click-right = ~/.config/i3/scripts/ip.py change
+click-middle = ~/.config/i3/scripts/floating.sh python /home/sarange/.config/i3/scripts/getInput.py && ~/.config/i3/scripts/ip.py changeCustom
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-padding = 2
