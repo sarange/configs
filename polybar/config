@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Sun Jun 30 2019
+# Last Modified: Tue Jul 16 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -240,7 +240,7 @@ format = "<label>"
 exec = ~/.config/i3/scripts/ip.py auto
 click-left = ~/.config/i3/scripts/ip.py rmtime
 click-right = ~/.config/i3/scripts/ip.py change
-click-middle = ~/.config/i3/scripts/floating.sh python /home/sarange/.config/i3/scripts/getInput.py && ~/.config/i3/scripts/ip.py changeCustom
+click-middle = ~/.config/i3/scripts/floating.sh python ~/.config/i3/scripts/getInput.py && ~/.config/i3/scripts/ip.py changeCustom
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-padding = 2
@@ -323,7 +323,7 @@ exec = ~/.config/i3/scripts/checkUpdates.py
 tail = true
 ;format-margin = ${margin.for-modules}
 click-left = ~/.config/i3/scripts/floating.sh yay &
-click-right = ~/.config/i3/scripts/checkUpdates.py True && ~/.config/i3/scripts/floating.sh less /home/sarange/.config/i3/logs/updates.log &
+click-right = ~/.config/i3/scripts/checkUpdates.py True && ~/.config/i3/scripts/floating.sh less ~/.config/i3/logs/updates.log &
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-underline = ${colors.background-alt}
