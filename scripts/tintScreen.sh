@@ -1,4 +1,17 @@
-#!/bin/bash
+#!/usr/bin/bash
+#####
+# File: /home/sarange/i3/scripts/tintScreen.sh
+# Project: /home/sarange/i3/scripts
+# Created Date: Friday, June 21st 2019, 8:28:54 pm
+# Author: sarange
+# -----
+# Last Modified: Wed Jul 17 2019
+# Modified By: sarange
+# -----
+# Copyright (c) 2019 sarange
+# 
+# Talk is cheap. Show me the code.
+#####
 
 if [[ "$@" = "1" ]]; then
   echo Making screen red

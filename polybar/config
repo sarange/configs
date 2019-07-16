@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Tue Jul 16 2019
+# Last Modified: Wed Jul 17 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -36,17 +36,6 @@ format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-padding = 2
 format-underline = ${colors.background-alt}
-
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-mount-1 = /media/mediabarbosa
-
-label-mounted =  %percentage_free%%
-label-unmounted = %mountpoint%: not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/i3]
 type = internal/i3

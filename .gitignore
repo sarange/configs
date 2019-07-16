@@ -1,5 +1,7 @@
 tmp/
 __pycache__/
 logs/
-wallpapers/
+wallpapers/*
+!wallpapers/26.png
+!wallpapers/33.jpg
 apiKey
