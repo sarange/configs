@@ -5,7 +5,7 @@
 # Created Date: Sunday, June 16th 2019, 2:51:06 pm
 # Author: sarange
 # -----
-# Last Modified: Sat Jun 29 2019
+# Last Modified: Tue Jul 16 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -139,16 +139,12 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 bindkey "^d" backward-kill-line # Ctrl+D
 bindkey "^H" backward-delete-word # Ctrl+Bksp
 
-alias nlu="nmcli con up 'ProtonVPN Netherlands 1'"
-alias nld="nmcli con down 'ProtonVPN Netherlands 1'"
 alias backup='~/Documents/backup.sh'
-alias nmap_ippsec='nmap -sC -sV -oA'
 alias luks_C='sudo cryptsetup luksClose'
 alias luks_O='sudo cryptsetup luksOpen'
 alias baya='backup && yasu'
 alias htb_con='sudo openvpn ~/Documents/PenTest/hackthebox/Other/sarange.ovpn'
 alias htb='cd ~/Documents/PenTest/hackthebox/'
-alias wallpshuf='feh --bg-fill ~/.local/share/wallpapers/$(shuf -i1-49 -n1).*'
 alias wallppotd='~/.config/i3/scripts/potd.py'
 alias setwall='~/.config/i3/scripts/setWal.py'
 alias qrcode='~/.config/i3/scripts/qrcode.sh'

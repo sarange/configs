@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Wednesday, June 12th 2019, 1:04:31 pm
 Author: sarange
 -----
-Last Modified: Sat Jun 29 2019
+Last Modified: Tue Jul 16 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -14,29 +14,37 @@ Copyright (c) 2019 sarange
 Talk is cheap. Show me the code.
 '''
 import sys
-sys.path.append('/home/sarange/.config/i3/scripts/')
+sys.path.append(f'{__import__("os").path.realpath(__file__).split("i3")[0]}/i3/scripts/')
 from dnsleaktest import main as dns
 import subprocess, os
 
+def down():
+	FNULL = open(os.devnull, 'w')
+	vpn = subprocess.Popen(('nmcli', 'con', 'down', detect(False)), stdout=FNULL)
+	vpn.wait()
+
+def up(num):
+	FNULL = open(os.devnull, 'w')
+	vpn = subprocess.Popen(('nmcli', 'con', 'up', num), stdout=FNULL)
+	vpn.wait()
+
 def change(vpnNum='default'):
-	vpn = {'nl1' : 'c069134e-37a2-484c-8fde-e51fb00c0725',
+	vpnlst = {'nl1' : 'c069134e-37a2-484c-8fde-e51fb00c0725',
 	'nl2' : 'f1808f49-1614-417e-abac-106ac3ec6dcb',
 	'us1' : '65f74ec7-4e27-4bee-9d1a-3317692f11d5',
 	'us2' : '376213e9-0ef5-491d-bf63-621c7ca6ad4f',
 	'jp1' : '89e0310b-9314-4e18-aa49-fe5d3b3a16eb',
 	'jp2' : '5617a26e-cd0b-41b5-9e87-ede0a6702820'
 	}
-	FNULL = open(os.devnull, 'w')
 	if vpnNum == 'default':
 		output = detect(False)
-		vpnNum = 'nl1'
-		chose = output == 'VPN Down'
-	if chose:
-		vpn = subprocess.Popen(('nmcli', 'con', 'up', vpn[vpnNum]), stdout=FNULL)
-		vpn.wait()
+		if output == 'VPN Down':
+			up(vpnlst['nl1'])
+		else:
+			down()
 	else:
-		vpn = subprocess.Popen(('nmcli', 'con', 'down', output), stdout=FNULL)
-		vpn.wait()
+		down()
+		up(vpnlst[vpnNum])
 
 def detect(default=True):
 	nmcli = subprocess.Popen(('nmcli', 'con'), stdout=subprocess.PIPE)

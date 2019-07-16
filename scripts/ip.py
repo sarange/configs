@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Saturday, June 15th 2019, 3:50:36 pm
 Author: sarange
 -----
-Last Modified: Sat Jun 29 2019
+Last Modified: Tue Jul 16 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -15,7 +15,7 @@ Talk is cheap. Show me the code.
 '''
 #%%
 import subprocess, os, sys
-sys.path.append('/home/sarange/.config/i3/scripts/')
+sys.path.append(f'{os.path.realpath(__file__).split("i3")[0]}i3/scripts/')
 from dnsleaktest import main as dns
 import vpn
 import datetime, time
@@ -37,7 +37,7 @@ def main():
 		if 'DNS may be leaking' in dnsOutput:
 			output = f' {icanhazip}'
 			code = 33
-			with open('/home/sarange/.config/i3/logs/dns.log', 'a') as f:
+			with open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/dns.log', 'a') as f:
 				timestamp = datetime.datetime.now()
 				f.write(f'{dnsOutput}\n{timestamp}')
 		else:
@@ -59,24 +59,24 @@ if __name__ == '__main__':
 	try:
 		if sys.argv[1] == 'change':
 			vpn.change()
-			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
+			open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'w').write('0')
 			print('')
 			enter = False
 		elif sys.argv[1] == 'changeCustom':
-			vpnNum = open('/home/sarange/.config/i3/logs/vpnNum.log', 'r').read().split('\n')[0]
+			vpnNum = open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/vpnNum.log', 'r').read().split('\n')[0]
 			vpn.change(vpnNum=vpnNum)
-			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
-			open('/home/sarange/.config/i3/logs/vpnNum.log', 'w').write('')
+			open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'w').write('0')
+			open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/vpnNum.log', 'w').write('')
 			print('')
 			enter = False
 		elif sys.argv[1] == 'auto':
-			ntime = open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'r').read().split('\n')[0]
+			ntime = open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'r').read().split('\n')[0]
 			waittime = 60
 			until = time.time() - float(ntime)
 			if waittime > until:
 				enter = False
 		elif sys.argv[1] == 'rmtime':
-			open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write('0')
+			open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'w').write('0')
 			enter = False
 	except:
 		pass
@@ -84,11 +84,11 @@ if __name__ == '__main__':
 		waitForConnection()
 		output, code = main()
 		print(f'{output} ')
-		open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
+		open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
 		exit(code)
 	else:
 		try:
-			t = open('/home/sarange/.config/i3/logs/lastDnsTest.log', 'r').read().split('\n')
+			t = open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'r').read().split('\n')
 			print(f'{t[1]} {int(until//1)}')
 		except:
 			pass

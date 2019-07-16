@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Sunday, June 23rd 2019, 1:29:08 pm
 Author: sarange
 -----
-Last Modified: Tue Jun 25 2019
+Last Modified: Tue Jul 16 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -39,7 +39,7 @@ def main(lst=False):
             laur = len(aur.split('\n')) - 1
             return f'{icon} {lpacman}|{laur}'
     else:
-        with open('/home/sarange/.config/i3/logs/updates.log', 'w') as file:
+        with open(f'{__import__("os").path.realpath(__file__).split("i3")[0]}/i3/logs/updates.log', 'w') as file:
             update = ''
             if not pacman == '':
                 update += f'Pacman:\n{pacman}\n'

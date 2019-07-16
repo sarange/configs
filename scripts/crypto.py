@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/polybar
 Created Date: Monday, June 17th 2019, 12:36:52 am
 Author: sarange
 -----
-Last Modified: Mon Jul 01 2019
+Last Modified: Tue Jul 16 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -21,7 +21,7 @@ import json
 import re
 
 def main():
-	apiKey = open('/home/sarange/.config/i3/scripts/apiKey', 'r').read()
+	apiKey = open(f'{__import__("os").path.realpath(__file__).split("i3")[0]}/i3/scripts/apiKey', 'r').read()
 	url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
 	headers = {
 		'Accepts': 'application/json',

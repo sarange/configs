@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Thursday, June 13th 2019, 5:34:19 pm
 Author: sarange
 -----
-Last Modified: Mon Jun 24 2019
+Last Modified: Tue Jul 16 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -25,7 +25,7 @@ def getBing(dirname, locale, resolution):
     photo = json.loads(check_output(shlex.split(f'curl -X GET "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt={locale}"')).decode('utf-8'))['images'][0]['urlbase'] + "_" + resolution + ".jpg"
     url = f'https://www.bing.com{photo}'
     photo_name = photo[photo.find(".") + 1:]
-    filename = f'{dirname}/.local/share/wallpapers/Bing/{photo_name}'
+    filename = f'{dirname}/Bing/{photo_name}'
     return filename, url
 
 def getNasa(dirname, locale, resolution):
@@ -35,7 +35,7 @@ def getNasa(dirname, locale, resolution):
         photo_name = url[url.rfind("/") + 1:]
     else:
         return getBing(dirname, locale, resolution)
-    filename = f'{dirname}/.local/share/wallpapers/NASA/{photo_name}'
+    filename = f'{dirname}/NASA/{photo_name}'
     return filename, url
 
 def setWallpapper(photo):
@@ -55,8 +55,8 @@ def main():
     #Initialize variables
     locale = 'en-US'
     resolution = '1920x1080'
-    dirname = f'/home/{check_output("whoami").decode("utf-8").split()[0]}'
-    lastLocation = f'{dirname}/.local/share/wallpapers/last.txt'
+    dirname = f'{__import__("os").path.realpath(__file__).split("i3")[0]}i3/wallpapers'
+    lastLocation = f'{dirname}/last.txt'
     lastPhoto = open(lastLocation, 'r').read().strip()
 
     #Set old photo as wall 
