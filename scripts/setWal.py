@@ -1,4 +1,4 @@
-#!/home/sarange/.virtualenvs/i3/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 '''
 File: /home/sarange/.config/i3/scripts/setWal.py
@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Monday, June 24th 2019, 3:24:32 pm
 Author: sarange
 -----
-Last Modified: Tue Jul 16 2019
+Last Modified: Wed Jul 24 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange

@@ -4,7 +4,7 @@
  * Created Date: Monday, June 17th 2019, 1:33:21 pm
  * Author: sarange
  * -----
- * Last Modified: Mon Jun 17 2019
+ * Last Modified: Wed Jul 24 2019
  * Modified By: sarange
  * -----
  * Copyright (c) 2019 sarange
@@ -20,7 +20,7 @@
             "language": "python",
             "blankLinesAfter": 0,
             "beforeHeader": [
-                "#!/home/sarange/.virtualenvs/i3/bin/python",
+                "#!/usr/bin/env python",
                 "# -*- coding:utf-8 -*-"
             ]
         }

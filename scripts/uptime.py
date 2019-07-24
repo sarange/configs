@@ -1,4 +1,4 @@
-#!/home/sarange/.virtualenvs/i3/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 '''
 File: /home/sarange/.config/i3/scripts/uptime.py
@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Sunday, June 23rd 2019, 10:24:11 pm
 Author: sarange
 -----
-Last Modified: Mon Jun 24 2019
+Last Modified: Wed Jul 24 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange

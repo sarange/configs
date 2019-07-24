@@ -1,19 +1,18 @@
-#!/home/sarange/.virtualenvs/i3/bin/python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 '''
-File: /home/sarange/.config/i3/scripts/changeVpn.py
-Project: /home/sarange/.config/i3/scripts
-Created Date: Monday, June 17th 2019, 1:35:45 pm
+File: /home/sarange/i3/scripts/changeVpn.py
+Project: /home/sarange/i3/scripts
+Created Date: Monday, June 17th 2019, 1:35:57 pm
 Author: sarange
 -----
-Last Modified: Mon Jun 17 2019
+Last Modified: Wed Jul 24 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
 
 Talk is cheap. Show me the code.
 '''
-
 from myvpn import main as m
 from dnsleaktest import main as dns
 import subprocess, os

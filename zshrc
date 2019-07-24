@@ -1,11 +1,11 @@
-#!/usr/bin/zsh
+#!/usr/bin/env bash
 #####
 # File: /home/sarange/.config/i3/zshrc
 # Project: /home/sarange/.config/i3
 # Created Date: Sunday, June 16th 2019, 2:51:06 pm
 # Author: sarange
 # -----
-# Last Modified: Tue Jul 16 2019
+# Last Modified: Mon Jul 22 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -18,6 +18,9 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.6.0/bin:/usr/local/
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+# Fix terminal
+TERM=xterm-256color
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -142,9 +145,14 @@ bindkey "^H" backward-delete-word # Ctrl+Bksp
 alias backup='~/Documents/backup.sh'
 alias luks_C='sudo cryptsetup luksClose'
 alias luks_O='sudo cryptsetup luksOpen'
+alias luks_T1='sudo cryptsetup luksOpen /dev/LvmCryptStorage/T1 T1 && sudo mount /dev/mapper/T1 ~/Media/Luks/T1'
+alias luks_T2='sudo cryptsetup luksOpen /dev/LvmCryptStorage/T2 T2 && sudo mount /dev/mapper/T2 ~/Media/Luks/T2'
+alias luks_T3='sudo cryptsetup luksOpen /dev/LvmCryptStorage/T3 T3 && sudo mount /dev/mapper/T3 ~/Media/Luks/T3'
+alias luks_CA='sudo umount ~/Media/Luks/T*; sudo cryptsetup luksClose'
 alias baya='backup && yasu'
 alias htb_con='sudo openvpn ~/Documents/PenTest/hackthebox/Other/sarange.ovpn'
 alias htb='cd ~/Documents/PenTest/hackthebox/'
 alias wallppotd='~/.config/i3/scripts/potd.py'
 alias setwall='~/.config/i3/scripts/setWal.py'
 alias qrcode='~/.config/i3/scripts/qrcode.sh'
+alias incog='fc -p'
