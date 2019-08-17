@@ -20,11 +20,5 @@ killall -q polybar -9
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-	WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') MONITOR=$m polybar -c ~/.config/i3/polybar/config top -r 2>> ~/.config/i3/logs/top.log &
-	WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') MONITOR=$m polybar -c ~/.config/i3/polybar/config bottom -r 2>> ~/.config/i3/logs/bottom.log &
+	WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') MONITOR=$m polybar -c ~/.config/i3/polybar/config simple -r 2>> ~/.config/i3/logs/simple.log &
 done
-
-
-# # Launch polybar
-# polybar -c ~/.config/i3/polybar/config top -r 2>> ~/.config/i3/logs/top.log &
-# polybar -c ~/.config/i3/polybar/config bottom -r 2>> ~/.config/i3/logs/bottom.log &
