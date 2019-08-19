@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Fri Aug 16 2019
+# Last Modified: Sun Aug 18 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -181,7 +181,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 #assign [class="konsole"] $ws2
 
 assign [class="Sublime_text"] $ws3
-assign [class="code"] $ws3
+assign [class="VSCodium"] $ws3
 assign [class="dolphin"] $ws4
 assign [class="Viber"] $ws9
 assign [class="keepassxc"] $ws10

@@ -5,7 +5,7 @@
 # Created Date: Sunday, June 23rd 2019, 4:06:03 pm
 # Author: sarange
 # -----
-# Last Modified: Mon Jun 24 2019
+# Last Modified: Mon Aug 19 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -20,8 +20,8 @@ pid="$!"
 # Wait for the window to open and grab its window ID
 winid=''
 while : ; do
-    winid="`wmctrl -lp | awk -vpid=$pid '$3==pid {print $1; exit}'`"
-    [[ -z "${winid}" ]] || break
+	winid="`wmctrl -lp | awk -vpid=$pid '$3==pid {print $1; exit}'`"
+	[[ -z "${winid}" ]] || break
 done
 
 # Focus the window we found

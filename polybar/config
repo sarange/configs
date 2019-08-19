@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Fri Aug 16 2019
+# Last Modified: Sun Aug 18 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -311,6 +311,7 @@ ramp-foreground = #55
 type = custom/script
 exec = ~/.config/i3/scripts/checkUpdates.py
 tail = true
+interval = 30
 ;format-margin = ${margin.for-modules}
 click-left = ~/.config/i3/scripts/floating.sh yay &
 click-right = ~/.config/i3/scripts/checkUpdates.py True && ~/.config/i3/scripts/floating.sh less ~/.config/i3/logs/updates.log &

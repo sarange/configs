@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Saturday, June 15th 2019, 3:50:36 pm
 Author: sarange
 -----
-Last Modified: Wed Jul 24 2019
+Last Modified: Mon Aug 19 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -83,12 +83,21 @@ if __name__ == '__main__':
 	if enter:
 		waitForConnection()
 		output, code = main()
-		print(f'{output} ')
+		print(f'{output} ')
 		open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
 		exit(code)
 	else:
 		try:
 			t = open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'r').read().split('\n')
-			print(f'{t[1]} {int(until//1)}')
+			tmp = until//1 % 4
+			if tmp == 0:
+				sign = u"\u25DC"
+			elif tmp == 1:
+				sign = u"\u25DD"
+			elif tmp == 2:
+				sign = u"\u25DE"
+			elif tmp == 3:
+				sign = u"\u25DF"
+			print(f'{t[1]} {sign}')
 		except:
 			pass
