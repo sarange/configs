@@ -91,13 +91,13 @@ if __name__ == '__main__':
 			t = open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'r').read().split('\n')
 			tmp = until//1 % 4
 			if tmp == 0:
-				sign = u"\u25DC"
+				sign = u"\u25DC "
 			elif tmp == 1:
-				sign = u"\u25DD"
+				sign = u" \u25DD"
 			elif tmp == 2:
-				sign = u"\u25DE"
+				sign = u" \u25DE"
 			elif tmp == 3:
-				sign = u"\u25DF"
+				sign = u"\u25DF "
 			print(f'{t[1]} {sign}')
 		except:
 			pass
