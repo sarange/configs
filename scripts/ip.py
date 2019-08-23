@@ -98,6 +98,6 @@ if __name__ == '__main__':
 				sign = u" \u25DE"
 			elif tmp == 3:
 				sign = u"\u25DF "
-			print(f'{t[1]} {sign}')
+			print(f'{t[1]}  {sign}')
 		except:
 			pass

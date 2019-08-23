@@ -13,6 +13,10 @@
 # Talk is cheap. Show me the code.
 #####
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZSH_CUSTOM/plugins/autoswitch_virtualenv"
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+pip3 install virtualenv --user
 ln -s ~/.config/i3/zshrc ~/.zshrc
 ln ~/.cache/wal/colors-konsole.colorscheme ~/.local/share/konsole
 xrdb -load ~/.config/i3/Xresources
