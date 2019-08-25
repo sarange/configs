@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Saturday, June 15th 2019, 3:50:36 pm
 Author: sarange
 -----
-Last Modified: Mon Aug 19 2019
+Last Modified: Sun Aug 25 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -83,7 +83,7 @@ if __name__ == '__main__':
 	if enter:
 		waitForConnection()
 		output, code = main()
-		print(f'{output} ')
+		print(f'{output} \u25CC')
 		open(f'{os.path.realpath(__file__).split("i3")[0]}i3/logs/lastDnsTest.log', 'w').write(f'{time.time()}\n{output}')
 		exit(code)
 	else:
