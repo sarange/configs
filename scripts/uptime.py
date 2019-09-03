@@ -27,12 +27,13 @@ def main():
 	'month':'M',
 	'year':'Y',
 	'years':'Y',
-	' ':'',
-	',':' '
+        'day': 'd',
+        'days': 'd',
+        ' ':''
 	}
 	pattern = re.compile(r'\b(' + '|'.join(d.keys()) + r')\b')
 	result = pattern.sub(lambda x: d[x.group()], uptime)
-	return result 
+	return result
 
 if __name__ == '__main__':
 	print(main())
