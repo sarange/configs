@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Fri Aug 23 2019
+# Last Modified: Wed Sep 04 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -443,8 +443,9 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = python ~/.config/i3/scripts/spotify_status.py -f '{artist} - {song} {play_pause}' -p ',' -t '10'
-click-left = 
+exec = playerctl --player=vlc,spotify metadata --format "{{ title }} - {{artist}}"
+click-left = playerctl --player=vlc,spotify play-pause
+click-right = playerctl --player=vlc,spotify next
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-underline = ${colors.background-alt}
