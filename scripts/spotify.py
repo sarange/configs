@@ -14,9 +14,8 @@ Copyright (c) 2019 sarange
 Talk is cheap. Show me the code.
 '''
 from subprocess import check_output, call
-from sys import argv
 from os import path
-
+from sys import argv
 
 def checkStatus():
 	with open('/dev/null', 'w') as NULL:
@@ -48,13 +47,27 @@ def rollThat(out, length, part):
 		return f'{out[part:]}{out[:part2]}'
 
 def checkRolling(length):
+	logFile = f'{path.realpath(__file__).split("i3")[0]}/i3/logs/spotify.log'
 	stat = checkStatus()
+	if 'Advertisement' in stat[0] or 'Spotify' in stat[0]:
+		sink = check_output(['pacmd', 'list-sink-inputs']).decode('utf-8').split('index: ')
+		for index in sink:
+			if 'Spotify' in index:
+				sink = index.split('\n')[0]
+		call(['pacmd', 'set-sink-input-mute', sink, 'true'])
+		with open(logFile, 'w') as log:
+			log.write('\nMuted')
+		return 'Advertisement Muted '
 	if length < len(stat[0]):
-		logFile = f'{path.realpath(__file__).split("i3")[0]}/i3/logs/spotify.log'
 		with open(logFile, 'r') as log:
 			try:
 				part = int(log.readline().split('part: ')[1])%length
 			except:
+				sink = check_output(['pacmd', 'list-sink-inputs']).decode('utf-8').split('index: ')
+				for index in sink:
+					if 'Spotify' in index:
+						sink = index.split('\n')[0]
+				call(['pacmd', 'set-sink-input-mute', sink, 'false'])
 				part = 0
 		with open(logFile, 'w') as log:
 			log.write(f'part: {part + 1}')
@@ -63,12 +76,15 @@ def checkRolling(length):
 		return ' '.join(checkStatus())
 
 if __name__ == "__main__":
-	if len(argv) > 1:
-		if argv[1] == 'rolling':
-			print(checkRolling(int(argv[2])))
-		elif argv[1] == 'playPause':
-			playPause()
-		elif argv[1] == 'next':
-			next()
-	else:
-		print(' '.join(checkStatus()))
+	try:
+		if len(argv) > 1:
+			if argv[1] == 'rolling':
+				print(checkRolling(int(argv[2])))
+			elif argv[1] == 'playPause':
+				playPause()
+			elif argv[1] == 'next':
+				next()
+		else:
+			print(' '.join(checkStatus()))
+	except:
+		pass

@@ -431,12 +431,9 @@ type = custom/script
 interval = 1800
 format = <label>
 format-padding = 1
-; format-suffix = "°C"
 format-prefix-foreground = ${colors.foreground-alt}
 format-background = ${colors.background}
 exec = ~/.config/i3/scripts/weather.sh -i
-click-left = ~/.config/i3/scripts/weather.sh -i
-click-right = ~/.config/i3/scripts/weather.sh -i -f
 
 [module/spotify]
 type = custom/script
