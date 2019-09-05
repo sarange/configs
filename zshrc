@@ -146,7 +146,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 bindkey "^d" backward-kill-line # Ctrl+D
 bindkey "^H" backward-delete-word # Ctrl+Bksp
 
-alias backup='~/Documents/backup.sh'
+alias backup='~/Documents/BackupScripts/backup.sh'
 alias luks_C='sudo cryptsetup luksClose'
 alias luks_O='sudo cryptsetup luksOpen'
 alias luks_T1='sudo cryptsetup luksOpen /dev/LvmCryptStorage/T1 T1 && sudo mount /dev/mapper/T1 ~/Media/Luks/T1'

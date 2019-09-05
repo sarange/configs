@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Wed Sep 04 2019
+# Last Modified: Thu Sep 05 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -443,9 +443,9 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = playerctl --player=vlc,spotify metadata --format "{{ title }} - {{artist}}"
-click-left = playerctl --player=vlc,spotify play-pause
-click-right = playerctl --player=vlc,spotify next
+exec = ~/.config/i3/scripts/spotify.py rolling 20
+click-left = ~/.config/i3/scripts/spotify.py playPause
+click-right = ~/.config/i3/scripts/spotify.py next
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-underline = ${colors.background-alt}
