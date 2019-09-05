@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Sun Aug 18 2019
+# Last Modified: Fri Sep 06 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -186,6 +186,7 @@ assign [class="dolphin"] $ws4
 assign [class="Viber"] $ws9
 assign [class="keepassxc"] $ws10
 assign [class="korganizer"] $ws9
+assign [class="Spotify"] $ws9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -291,9 +292,11 @@ bindsym --release $sup+p exec escrotum -s -C
 # exec --no-startup-id viber
 # exec --no-startup-id nm-applet
 exec --no-startup-id keepassxc
-exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
 exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
+# exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
+exec --no-startup-id Spotify
 exec --no-startup-id i3-msg 'workspace $ws1; exec firefox -P Default'
+
 
 
 # exit i3 (logs you out of your X session)
