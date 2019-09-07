@@ -11,4 +11,5 @@
 * Icons: Font awesome 5
 * Colors: pywal
 
-Dependencies: =<python3.6, zsh, polybar, i3-gaps, curl, pywal, playerctl
+Dependencies: =>python3.6, zsh, polybar, i3-gaps, curl, make, cmake, automake, 
+Optional: pywal, playerctl, konsole, rofi

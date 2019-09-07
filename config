@@ -188,6 +188,8 @@ assign [class="keepassxc"] $ws10
 assign [class="korganizer"] $ws9
 assign [class="Spotify"] $ws9
 
+for_window [class="ssh-askpass"] floating enable
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -289,14 +291,16 @@ bindsym --release $sup+p exec escrotum -s -C
 
 
 # applications
-# exec --no-startup-id viber
-# exec --no-startup-id nm-applet
-exec --no-startup-id keepassxc
-exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
 # exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
-exec --no-startup-id Spotify
-exec --no-startup-id i3-msg 'workspace $ws1; exec firefox -P Default'
+# exec --no-startup-id viber
+exec --no-startup-id keepassxc
+exec --no-startup-id konsole
+exec --no-startup-id spotify
+exec --no-startup-id firefox -P Default
 
+for_window [class="firefox"] move to workspace $ws1
+for_window [class="konsole"] move to workspace $ws2
+for_window [class="Spotify"] move to workspace $ws9
 
 
 # exit i3 (logs you out of your X session)
