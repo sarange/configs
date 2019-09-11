@@ -5,7 +5,7 @@
 # Created Date: Monday, June 24th 2019, 3:08:45 pm
 # Author: sarange
 # -----
-# Last Modified: Fri Aug 16 2019
+# Last Modified: Wed Sep 11 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -20,5 +20,5 @@ killall -q polybar -9
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-	WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') MONITOR=$m polybar -c ~/.config/i3/polybar/config simple -r 2>> ~/.config/i3/logs/simple.log &
+	WIRELESS=$(ls /sys/class/net/ | grep ^wl | awk 'NR==1{print $1}') MONITOR=$m polybar -c ~/.config/i3/polybar/config allsimple -r 2>> ~/.config/i3/logs/allsimple.log &
 done
