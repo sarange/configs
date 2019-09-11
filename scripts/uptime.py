@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Sunday, June 23rd 2019, 10:24:11 pm
 Author: sarange
 -----
-Last Modified: Sun Sep 01 2019
+Last Modified: Wed Sep 11 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -23,13 +23,15 @@ def main():
 	'minute':'m',
 	'hours':'h',
 	'hour':'h',
+	'week':'w',
+	'weeks':'w',
 	'months':'M',
 	'month':'M',
 	'year':'Y',
 	'years':'Y',
-        'day': 'd',
-        'days': 'd',
-        ' ':''
+	'day': 'd',
+	'days': 'd',
+	' ':''
 	}
 	pattern = re.compile(r'\b(' + '|'.join(d.keys()) + r')\b')
 	result = pattern.sub(lambda x: d[x.group()], uptime)

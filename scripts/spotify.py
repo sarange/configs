@@ -6,7 +6,7 @@ Project: /home/sarange/i3/scripts
 Created Date: Friday, June 21st 2019, 3:39:16 pm
 Author: sarange
 -----
-Last Modified: Thu Sep 05 2019
+Last Modified: Tue Sep 10 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -65,9 +65,8 @@ def checkRolling(length):
 			except:
 				sink = check_output(['pacmd', 'list-sink-inputs']).decode('utf-8').split('index: ')
 				for index in sink:
-					if 'Spotify' in index:
-						sink = index.split('\n')[0]
-				call(['pacmd', 'set-sink-input-mute', sink, 'false'])
+					if 'spotify' in index.lower():
+						call(['pacmd', 'set-sink-input-mute', index.split('\n')[0], 'false'])
 				part = 0
 		with open(logFile, 'w') as log:
 			log.write(f'part: {part + 1}')

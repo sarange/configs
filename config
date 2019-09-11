@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Fri Sep 06 2019
+# Last Modified: Tue Sep 10 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -107,10 +107,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -186,7 +186,7 @@ assign [class="dolphin"] $ws4
 assign [class="Viber"] $ws9
 assign [class="keepassxc"] $ws10
 assign [class="korganizer"] $ws9
-assign [class="Spotify"] $ws9
+assign [class="[Ss]potify"] $ws9
 
 for_window [class="ssh-askpass"] floating enable
 
@@ -297,11 +297,6 @@ exec --no-startup-id keepassxc
 exec --no-startup-id konsole
 exec --no-startup-id spotify
 exec --no-startup-id firefox -P Default
-
-for_window [class="firefox"] move to workspace $ws1
-for_window [class="konsole"] move to workspace $ws2
-for_window [class="Spotify"] move to workspace $ws9
-
 
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3?' -B 'Yes' 'i3-msg exit'"
