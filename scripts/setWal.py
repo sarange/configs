@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Monday, June 24th 2019, 3:24:32 pm
 Author: sarange
 -----
-Last Modified: Tue Aug 20 2019
+Last Modified: Sat Sep 14 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -17,7 +17,7 @@ Talk is cheap. Show me the code.
 def setWall(photo):
 	from subprocess import call
 
-	call(f'wal -i {photo} --saturate 0.9 -q'.split(' '))
+	call(f'wal -i {photo} --saturate 0.9 -s -q'.split(' '))
 	with open(f'{__import__("os").path.realpath(__file__).split("i3")[0]}i3/logs/setWal.log', 'w') as f:
 		f.write(photo)
 

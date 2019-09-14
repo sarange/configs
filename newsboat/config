@@ -1,0 +1,19 @@
+auto-reload yes
+reload-time 30
+
+external-url-viewer "urlscan -dc -r 'linkhandler {}'"
+
+color listnormal cyan default
+color listfocus black yellow standout bold
+color listnormal_unread blue default
+color listfocus_unread yellow default bold
+color info red black bold
+color article cyan default
+
+browser linkhandler
+macro , open-in-browser
+macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
+macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
+macro v set browser "i3 exec mpv"; open-in-browser-and-mark-read ; set browser linkhandler
+macro m set browser "i3 exec firefox"; open-in-browser ; set browser linkhandler
+macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler
