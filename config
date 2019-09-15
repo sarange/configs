@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Thu Sep 12 2019
+# Last Modified: Sun Sep 15 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -65,8 +65,8 @@ bindsym $mod+Return exec konsole
 bindsym $mod+Shift+q kill
 
 # start a program launcher
-bindsym $mod+d exec --no-startup-id "dmenu_run"
-bindsym $sup+d exec --no-startup-id "rofi -modi drun,run -show drun -display-drun ' ' -display-run ' ' -c ~/.config/i3/rofi.conf"
+# bindsym $mod+d exec --no-startup-id "dmenu_run"
+bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,ssh -show drun -c ~/.config/i3/rofi.conf"
 
 # change focus
 bindsym $mod+j focus left

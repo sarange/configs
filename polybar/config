@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Mon Sep 09 2019
+# Last Modified: Sun Sep 15 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -85,6 +85,20 @@ ws-icon-7 = 8;
 ws-icon-8 = 9;
 ws-icon-9 = 10;
 ws-icon-default = ♟
+
+[module/arrow2]
+type = custom/text
+content = ►
+content-foreground = ${colors.background}
+content-background = #00000000
+content-font = 5
+
+[module/arrow1]
+type = custom/text
+content = ◄
+content-foreground =  ${colors.background}
+content-background = #00000000 
+content-font = 5
 
 [module/mpd]
 type = internal/mpd
