@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Sun Sep 15 2019
+# Last Modified: Wed Sep 25 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -35,7 +35,7 @@ exec = ~/.config/i3/scripts/crypto.py
 format = <label>
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
-format-padding = 2
+format-padding = 1
 format-underline = ${colors.background-alt}
 
 [module/i3]
@@ -53,16 +53,16 @@ pin-workspaces = true
 label-focused = %icon%
 label-focused-background = ${colors.background}
 label-focused-foreground = ${colors.foreground-alt}
-label-focused-padding = 3
+label-focused-padding = 2
 label-focused-underline = ${colors.background-alt}
 
 label-unfocused = %icon%
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
-label-unfocused-padding = 3
+label-unfocused-padding = 2
 label-unfocused-underline = ${colors.background}
 
-label-urgent = %icon%
+label-urgent = !%icon%
 label-urgent-background = ${colors.background}
 label-urgent-foreground = ${colors.adapta-red}
 label-urgent-padding = 3
@@ -71,7 +71,7 @@ label-urgent-underline = ${colors.adapta-red}
 # label-visible = %output%
 label-visible-background = ${colors.background}
 label-visible-foreground = ${colors.foreground}
-label-visible-padding = 3
+label-visible-padding = 2
 label-visible-underline = ${colors.background}
 
 ws-icon-0 = 1;
@@ -88,7 +88,7 @@ ws-icon-default = ♟
 
 [module/arrow2]
 type = custom/text
-content = ►
+content = 
 content-foreground = ${colors.background}
 content-background = #00000000
 content-font = 5
@@ -144,7 +144,7 @@ label = "%date% %time%"
 label-background = ${colors.background}
 label-foreground = ${colors.foreground}
 label-underline = ${colors.background-alt}
-label-padding = 4
+label-padding = 1
 
 [module/alsa]
 type = internal/alsa
@@ -167,10 +167,14 @@ ramp-volume-4 = 
 
 label-volume-foreground = ${colors.foreground}
 
-bar-volume-indicator = ┃
-bar-volume-width = 7
-bar-volume-fill = ─
-bar-volume-empty = ─
+# bar-volume-indicator = ┃
+# bar-volume-fill = ─
+# bar-volume-empty = ─
+bar-volume-indicator = \
+bar-volume-fill = -
+bar-volume-empty = -
+bar-volume-width = 12
+bar-volume-indicator-foreground = ${colors.background-alt}
 bar-volume-empty-foreground = ${colors.foreground}
 bar-volume-foreground-0 = ${colors.adapta-green}
 bar-volume-foreground-1 = ${colors.adapta-yellow}
@@ -181,7 +185,7 @@ label-muted-background = ${colors.adapta-red}
 format-volume-background = ${colors.background}
 format-volume-foreground = ${colors.foreground}
 format-volume-underline = ${colors.background-alt}
-format-volume-padding = 4
+format-volume-padding = 1
 
 [module/battery]
 type = internal/battery
@@ -247,7 +251,7 @@ click-right = ~/.config/i3/scripts/ip.py change &
 click-middle = ~/.config/i3/scripts/floating.sh python ~/.config/i3/scripts/getInput.py && ~/.config/i3/scripts/ip.py changeCustom &
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
-format-padding = 2
+format-padding = 1
 format-underline = ${colors.background-alt}
 
 
@@ -257,7 +261,7 @@ interval = 256
 format = "<label> "
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-padding = 0
+format-padding = 1
 format-background = ${colors.background}
 exec = echo "$(uname -n)"
 
@@ -332,7 +336,7 @@ click-right = ~/.config/i3/scripts/checkUpdates.py True && ~/.config/i3/scripts/
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-underline = ${colors.background-alt}
-format-padding = 2
+format-padding = 1
 
 [module/memory]
 type = internal/memory
@@ -395,10 +399,11 @@ label = " %gb_used% / %gb_total%"
 
 ; Only applies if <bar-used> is used
 
-bar-used-indicator = ┃
-bar-used-width = 7
-bar-used-fill = ─
-bar-used-empty = ─
+bar-used-indicator = /
+bar-used-width = 10
+bar-used-fill = -
+bar-used-empty = -
+bar-used-indicator-foreground = ${colors.background-alt}
 bar-used-empty-foreground = ${colors.foreground}
 bar-used-foreground-0 = ${colors.adapta-green}
 bar-used-foreground-1 = ${colors.adapta-yellow}
@@ -501,7 +506,7 @@ exec = bash -c "xkb-switch"
 interval = 0.3
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
-format-padding = 2
+format-padding = 1
 format-underline = ${colors.background-alt}
 
 [module/uptime]
@@ -511,7 +516,7 @@ format = <label>
 exec = ~/.config/i3/scripts/uptime.py
 interval = 30
 format-background = ${colors.background}
-format-padding = 2
+format-padding = 1
 format-foreground = ${colors.foreground}
 format-underline = ${colors.background-alt}
 
@@ -559,7 +564,7 @@ format-connected = <label-connected>
 
 format-connected-background = ${colors.background}
 format-connected-foreground = ${colors.foreground}
-format-connected-padding = 2
+format-connected-padding = 1
 format-connected-underline = ${colors.background-alt}
 
 ; Available tags:

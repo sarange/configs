@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Sunday, June 23rd 2019, 1:29:08 pm
 Author: sarange
 -----
-Last Modified: Mon Aug 19 2019
+Last Modified: Fri Sep 27 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -31,10 +31,10 @@ def main(lst=False):
 		if pacman == '' and aur == '':
 			return ''
 		else:
-			if 'linux-' in pacman:
+			if 'linux' in pacman and not 'linux-lts' in pacman:
 				icon = ''
 			else:
-				icon = ''
+				icon = '' #
 			lpacman = len(pacman.split('\n')) - 1
 			laur = len(aur.split('\n')) - 1
 			return f'{icon} {lpacman}|{laur}'
