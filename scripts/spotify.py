@@ -6,7 +6,7 @@ Project: /home/sarange/i3/scripts
 Created Date: Friday, June 21st 2019, 3:39:16 pm
 Author: sarange
 -----
-Last Modified: Fri Sep 27 2019
+Last Modified: Sun Sep 29 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange

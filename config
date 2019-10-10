@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Sun Sep 15 2019
+# Last Modified: Mon Oct 07 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -149,6 +149,7 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+set $ws99 "99"
 
 set $output1 "HDMI-1"
 set $output2 "DVI-I-1"
@@ -164,6 +165,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9 
 bindsym $mod+0 workspace $ws10 move workspace to $output2
+bindsym $mod+F1 workspace $ws99
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -176,17 +178,25 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+F1 move container to workspace $ws99
 
 #assign [class="Firefox"] $ws1
 #assign [class="konsole"] $ws2
+# assign [class="korganizer"] $ws7
 
+# Editors
 assign [class="Sublime_text"] $ws3
 assign [class="VSCodium"] $ws3
+# File Explorer
 assign [class="dolphin"] $ws4
-assign [class="Viber"] $ws9
-assign [class="keepassxc"] $ws10
-assign [class="korganizer"] $ws9
+# Messengers
+assign [class="[Dd]iscord"] $ws8
+assign [class="Viber"] $ws8
+# Music
 assign [class="[Ss]potify"] $ws9
+# Keepass
+assign [class="keepassxc"] $ws10
+
 
 for_window [class="ssh-askpass"] floating enable
 
@@ -294,8 +304,8 @@ bindsym --release $sup+p exec escrotum -s -C
 # exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
 # exec --no-startup-id viber
 exec --no-startup-id keepassxc
-exec --no-startup-id konsole
-exec --no-startup-id spotify
+# exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
+# exec --no-startup-id i3-msg 'workspace $ws9; exec spotify'
 exec --no-startup-id firefox -P Default
 
 # exit i3 (logs you out of your X session)

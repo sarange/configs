@@ -1,6 +1,8 @@
 auto-reload yes
 reload-time 30
 
+bind-key M open-all-unread-in-browser-and-mark-read
+
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 
 color listnormal cyan default
@@ -10,7 +12,7 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article cyan default
 
-browser linkhandler
+browser firefox
 macro , open-in-browser
 macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
 macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
