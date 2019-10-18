@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Sunday, June 23rd 2019, 1:29:08 pm
 Author: sarange
 -----
-Last Modified: Fri Sep 27 2019
+Last Modified: Wed Oct 16 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -15,6 +15,7 @@ Talk is cheap. Show me the code.
 '''
 import shlex
 from subprocess import check_output
+from re import search
 
 def main(lst=False):
 	icon = ''
@@ -31,7 +32,7 @@ def main(lst=False):
 		if pacman == '' and aur == '':
 			return ''
 		else:
-			if 'linux' in pacman and not 'linux-lts' in pacman:
+			if search('linux [\d\.]+arch' , pacman):
 				icon = ''
 			else:
 				icon = '' #
