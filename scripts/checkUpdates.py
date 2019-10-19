@@ -20,14 +20,11 @@ from re import search
 def main(lst=False):
 	icon = ''
 	with open('/dev/null', 'w') as NULL:
-		problem = True
-		while problem:
-			try:
-				pacman = str(check_output(['checkupdates'], stderr=NULL))[2:-1].replace('\\n', '\n')
-				aur = str(check_output(['yay','-Qum'], stderr=NULL))[2:-1].replace('\\n', '\n')
-				problem = False
-			except:
-				problem = True
+		try:
+			pacman = str(check_output(['checkupdates'], stderr=NULL))[2:-1].replace('\\n', '\n')
+		except: 
+			pacman = ''
+		aur = str(check_output(['yay','-Qum'], stderr=NULL))[2:-1].replace('\\n', '\n')
 	if not lst:
 		if pacman == '' and aur == '':
 			return ''

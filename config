@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Mon Oct 07 2019
+# Last Modified: Sat Oct 19 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -119,8 +119,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Move to secondary screen
-#bindsym $sup+p move workspace to $output1
-#bindsym $sup+o move workspace to $output2
+bindsym $sup+1 move workspace to $output1
+bindsym $sup+2 move workspace to $output2
 
 # gaps
 gaps inner 15
@@ -151,8 +151,8 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws99 "99"
 
-set $output1 "HDMI-1"
-set $output2 "DVI-I-1"
+set $output1 HDMI-1
+set $output2 DVI-D-1
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1 move workspace to $output1
@@ -270,7 +270,7 @@ bindsym $sup+e exec amixer -D pulse set Master 1+ toggle
 # exec_always --no-startup-id xrdb -load ~/.config/i3/Xresources 
 # Launch Polybar
 exec_always --no-startup-id ~/.config/i3/scripts/setWal.py
-exec_always --no-startup-id ~/.config/i3/polybar/launch_simple.sh
+exec_always --no-startup-id ~/.config/i3/polybar/launch_simple2.sh
 # Kill compton if it's running and start it again 
 exec_always killall compton
 exec_always --no-startup-id compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
@@ -282,6 +282,7 @@ exec_always --no-startup-id compton --config ~/.config/i3/compton.conf 2>> ~/.co
 
 # SHUFFLE (screens and wallpaper 2 screens)
 # exec_always bash ~/.screenlayout/layout.sh && feh --bg-fill ~/.local/share/wallpapers/$(shuf -i1-$wallpaper-num -n1).* ~/.local/share/wallpapers/$(shuf -i1-$wallpaper-num -n1).*
+exec_always bash ~/.screenlayout/layout2.sh
 
 # Get POTD form bing  
 # locales: ar-XA, bg-BG, cs-CZ, da-DK, de-AT, de-CH, de-DE, el-GR, en-AU, en-CA, en-GB, en-ID, en-IE, en-IN, en-MY, en-NZ, en-PH, en-SG, en-US, en-XA, en-ZA, es-AR, es-CL, es-ES, es-MX, es-US, es-XL, et-EE, fi-FI, fr-BE, fr-CA, fr-CH, fr-FR, he-IL, hr-HR, hu-HU, it-IT, ja-JP, ko-KR, lt-LT, lv-LV, nb-NO, nl-BE, nl-NL, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sl-SL, sv-SE, th-TH, tr-TR, uk-UA, zh-CN, zh-HK, zh-TW

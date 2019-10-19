@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Mon Oct 07 2019
+# Last Modified: Sat Oct 19 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -16,6 +16,7 @@ include-file = ~/.config/i3/polybar/global.conf
 include-file = ~/.config/i3/polybar/bars/top.conf
 include-file = ~/.config/i3/polybar/bars/bottom.conf
 include-file = ~/.config/i3/polybar/bars/simple.conf
+include-file = ~/.config/i3/polybar/bars/monitor2.conf
 
 [colors]
 # adapta-cyan = #00BCD4
