@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Sat Oct 19 2019
+# Last Modified: Mon Oct 21 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -155,7 +155,7 @@ set $output1 HDMI-1
 set $output2 DVI-D-1
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1 move workspace to $output1
+bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
@@ -163,8 +163,8 @@ bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9 
-bindsym $mod+0 workspace $ws10 move workspace to $output2
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 bindsym $mod+F1 workspace $ws99
 
 # move focused container to workspace

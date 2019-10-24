@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Sat Oct 19 2019
+# Last Modified: Sun Oct 20 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -462,9 +462,9 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = ~/.config/i3/scripts/spotify.py rolling 20
-click-left = ~/.config/i3/scripts/spotify.py playPause
-click-right = ~/.config/i3/scripts/spotify.py next
+exec = python ~/.config/i3/scripts/spotify.py rolling 20
+click-left = python ~/.config/i3/scripts/spotify.py playPause
+click-right = python ~/.config/i3/scripts/spotify.py next
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-underline = ${colors.background-alt}
@@ -514,7 +514,7 @@ format-underline = ${colors.background-alt}
 type = custom/script
 format-prefix = " "
 format = <label>
-exec = ~/.config/i3/scripts/uptime.py
+exec = python ~/.config/i3/scripts/uptime.py
 interval = 30
 format-background = ${colors.background}
 format-padding = 1
