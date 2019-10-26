@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Wednesday, June 12th 2019, 1:04:31 pm
 Author: sarange
 -----
-Last Modified: Wed Jul 24 2019
+Last Modified: Sat Oct 26 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -17,8 +17,45 @@ import sys
 sys.path.append(f'{__import__("os").path.realpath(__file__).split("i3")[0]}/i3/scripts/')
 from dnsleaktest import main as dns
 import subprocess, os
+from re import search
+
+def ufw(enable, ip=None):
+	FNULL = open(os.devnull, 'w')
+	if enable:
+		com = subprocess.Popen(('sudo ufw default deny outgoing'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw default deny incoming'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw allow out on tun0 from any to any'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw allow out to 172.16.0.0/12'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw allow out to 192.168.1.0/24'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw allow in to 192.168.1.0/24'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen((f'sudo ufw allow out to {ip} port 1194 proto udp'.split(' ')), stdout=FNULL)
+		com.wait()
+	else:
+		numP = subprocess.check_output(('sudo ufw status numbered'.split(' ')))
+		num = search('\[ (\d+)\][\d\. ]+1194/udp[ ]+ALLOW OUT[ ]+Anywhere', str(numP))
+		com = subprocess.Popen(('sudo ufw default allow outgoing'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw default allow incoming'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw delete allow out on tun0 from any to any'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen((f'sudo ufw --force delete {num.group(1)}'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw delete allow out to 172.16.0.0/12'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw delete allow out to 192.168.1.0/24'.split(' ')), stdout=FNULL)
+		com.wait()
+		com = subprocess.Popen(('sudo ufw delete allow in to 192.168.1.0/24'.split(' ')), stdout=FNULL)
+		com.wait()
 
 def down():
+	ufw(False)
 	FNULL = open(os.devnull, 'w')
 	vpn = subprocess.Popen(('nmcli', 'con', 'down', detect(False)), stdout=FNULL)
 	vpn.wait()
@@ -27,6 +64,14 @@ def up(num):
 	FNULL = open(os.devnull, 'w')
 	vpn = subprocess.Popen(('nmcli', 'con', 'up', num), stdout=FNULL)
 	vpn.wait()
+	wget = subprocess.check_output(('wget', '-qO', '-', 'icanhazip.com'))
+	icanhazip = str(wget)[2:-3]
+	try:
+		int(icanhazip.replace('.', ''))
+	except Exception as error:
+		print('icanhazip.com didn\'t return an ip')
+		exit()
+	ufw(True, icanhazip)
 
 def change(vpnNum='default'):
 	vpnlst = {'nl1' : 'c069134e-37a2-484c-8fde-e51fb00c0725',
