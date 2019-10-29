@@ -1,11 +1,10 @@
-#!/usr/bin/env bash
 #####
 # File: /home/sarange/.config/i3/zshrc
 # Project: /home/sarange/.config/i3
 # Created Date: Sunday, June 16th 2019, 2:51:06 pm
 # Author: sarange
 # -----
-# Last Modified: Mon Jul 22 2019
+# Last Modified: Sun Oct 27 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -84,17 +83,17 @@ ZSH_THEME="sarange"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
-  virtualenv
-  archlinux
-  nmap
-  colorize
-  colored-man-pages
-  command-not-found
-  extract
-  web-search
-  autoswitch_virtualenv $plugins
-  tmux
+	git
+	virtualenv
+	archlinux
+	nmap
+	colorize
+	colored-man-pages
+	command-not-found
+	extract
+	web-search
+	autoswitch_virtualenv $plugins
+	tmux
 )
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -146,7 +145,6 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 bindkey "^d" backward-kill-line # Ctrl+D
 bindkey "^H" backward-delete-word # Ctrl+Bksp
 
-alias backup='~/Documents/BackupScripts/backup.sh'
 alias luks_C='sudo cryptsetup luksClose'
 alias luks_O='sudo cryptsetup luksOpen'
 alias luks_T1='sudo cryptsetup luksOpen /dev/LvmCryptStorage/T1 T1 && sudo mount /dev/mapper/T1 ~/Media/Luks/T1'

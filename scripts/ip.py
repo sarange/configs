@@ -6,7 +6,7 @@ Project: /home/sarange/.config/i3/scripts
 Created Date: Saturday, June 15th 2019, 3:50:36 pm
 Author: sarange
 -----
-Last Modified: Sat Oct 26 2019
+Last Modified: Tue Oct 29 2019
 Modified By: sarange
 -----
 Copyright (c) 2019 sarange
@@ -14,10 +14,11 @@ Copyright (c) 2019 sarange
 Talk is cheap. Show me the code.
 '''
 import subprocess, os, sys
-sys.path.append(f'{os.path.realpath(__file__).split("i3")[0]}i3/scripts/')
 from dnsleaktest import main as dns
 import vpn
 import datetime, time
+
+sys.path.append(f'{os.path.realpath(__file__).split("i3")[0]}i3/scripts/')
 
 def main():
 	wget = subprocess.check_output(('wget', '-qO', '-', 'icanhazip.com'))
@@ -29,7 +30,7 @@ def main():
 		exit()
 	output = vpn.detect()
 	if output == 'VPN Down':
-		output = f' {icanhazip}'
+		output = f' {icanhazip}'
 		code = 0
 	else:
 		dnsOutput = dns(True)

@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Sun Oct 20 2019
+# Last Modified: Mon Oct 28 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -308,13 +308,13 @@ format-warn = "<label-warn> "
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label = " %temperature-c%"
+label = " %temperature-c%"
 
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label-warn = %temperature-c%
+label-warn = " %temperature-c%"
 label-warn-foreground = #f00
 
 ; Requires the <ramp> tag
@@ -325,6 +325,11 @@ ramp-0 = A
 ramp-1 = B
 ramp-2 = C
 ramp-foreground = #55
+
+label-background = ${colors.background}
+label-padding = 1
+label-foreground = ${colors.foreground}
+label-underline = ${colors.background-alt}
 
 [module/pkg]
 type = custom/script
@@ -624,3 +629,38 @@ ramp-signal-4 = 
 ;;animation-packetloss-1-foreground = #000000
 ; Framerate in milliseconds
 ;;animation-packetloss-framerate = 500
+
+[module/filesystem]
+type = internal/fs
+
+; Mountpoints to display
+mount-0 = /
+mount-1 = /home
+
+; Available tags:
+;   <label-mounted> (default)
+;   <bar-free>
+;   <bar-used>
+;   <ramp-capacity>
+format-mounted = <label-mounted>
+
+; Available tags:
+;   <label-unmounted> (default)
+# format-unmounted = <label-unmounted>
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = " %mountpoint%: %percentage_used%%"
+
+label-mounted-background = ${colors.background}
+label-mounted-padding = 1
+label-mounted-foreground = ${colors.foreground}
+label-mounted-underline = ${colors.background-alt}
