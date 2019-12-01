@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Fri Oct 25 2019
+# Last Modified: Sun Dec 01 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -30,13 +30,6 @@ font pango:Font Awesome 5 Free Regular 10px
 font pango:Font Awesome 5 Free Solid 10px
 font pango:Font Awesome 5 Brands 11px
 
-# # set colors
-# set $bg-color            #2f343f
-# set $inactive-bg-color   #2f343f
-# set $text-color          #ffffff
-# set $inactive-text-color #676E7D
-# set $urgent-bg-color     #E53935
-
 # pywal
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
@@ -46,14 +39,14 @@ font pango:Font Awesome 5 Brands 11px
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
 
-# class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
+# class				 border  backgr. text indicator child_border
+client.focused		  $bg	 $bg	 $fg  $bg	   $bg
+client.focused_inactive $bg	 $bg	 $fg  $bg	   $bg
+client.unfocused		$bg	 $bg	 $fg  $bg	   $bg
+client.urgent		   $bg	 $bg	 $fg  $bg	   $bg
+client.placeholder	  $bg	 $bg	 $fg  $bg	   $bg
 
-client.background       $bg
+client.background	   $bg
 
 # drag windows
 floating_modifier $mod
@@ -69,24 +62,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,ssh -show drun -c ~/.config/i3/rofi.conf"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -113,32 +94,21 @@ bindsym $mod+space floating toggle
 bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $sup+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $sup+d focus child
 
 # Move to secondary screen
 bindsym $sup+1 move workspace to $output1
 bindsym $sup+2 move workspace to $output2
 
-# gaps
+# Gaps
 gaps inner 15
 gaps outer 0
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-# set $ws1 "1 "
-# set $ws2 "2 "
-# set $ws3 "3 "
-# set $ws4 "4 "
-# set $ws5 "5 "
-# set $ws6 "6 "
-# set $ws7 "7 "
-# set $ws8 "8 "
-# set $ws9 "9 "
-# set $ws10 "10 "
-
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -151,10 +121,11 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws99 "99"
 
+# Set displays
 set $output1 HDMI-1
 set $output2 DVI-D-1
 
-# switch to workspace
+# Switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -167,7 +138,7 @@ bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 bindsym $mod+F1 workspace $ws99
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -180,85 +151,34 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 bindsym $mod+Shift+F1 move container to workspace $ws99
 
-#assign [class="Firefox"] $ws1
-#assign [class="konsole"] $ws2
-# assign [class="korganizer"] $ws7
-
-# Editors
-assign [class="Sublime_text"] $ws3
-assign [class="VSCodium"] $ws3
-# File Explorer
-assign [class="dolphin"] $ws4
-# Messengers
-assign [class="[Dd]iscord"] $ws8
-assign [class="Viber"] $ws8
-# Music
-assign [class="[Ss]potify"] $ws9
-# Keepass
-assign [class="keepassxc"] $ws10
-
-
-for_window [class="ssh-askpass"] floating enable
-
-# reload the configuration file
+# Reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# resize window (you can also use the mouse for that)
+# Resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+		# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+		# Pressing left will shrink the window’s width.
+		# Pressing right will grow the window’s width.
+		# Pressing up will shrink the window’s height.
+		# Pressing down will grow the window’s height.
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+		# back to normal: Enter or Escape or $mod+r
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+		bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-
-# window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00006D
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00006D
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00006D
-client.urgent $urgent-bg-color $urgent-bg-color $text-color #00ff00
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# bar {
-#         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#         colors {
-#                 background $bg-color
-#                 separator #757575
-#                 #                  border             background         text
-#                 focused_workspace  $bg-color          $bg-color          $text-color
-#                 inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-#                 urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-#         }
-# }
-
-
-# lock i3
-# bindsym $mod+Shift+x exec i3lock --color 475263
+# Lock i3 and set language to english so that the password is typed correct afterwards
 bindsym $mod+Shift+x exec i3lock-fancy-rapid 5 5; exec xkb-switch -s us;
 
 # Volume
@@ -266,79 +186,86 @@ bindsym $sup+q exec amixer -q -D pulse sset Master 5%-
 bindsym $sup+w exec amixer -q -D pulse sset Master 5%+
 bindsym $sup+e exec amixer -D pulse set Master 1+ toggle
 
-# Load Xresources before Polybar
-# exec_always --no-startup-id xrdb -load ~/.config/i3/Xresources 
-# Launch Polybar
-exec_always --no-startup-id ~/.config/i3/scripts/setWal.py
-exec_always --no-startup-id ~/.config/i3/polybar/launch_simple2.sh
-# Kill compton if it's running and start it again 
-exec_always killall compton
-exec_always --no-startup-id dbus-launch compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
-
-# set $wallpaper-num 44
-
-# SHUFFLE (screens and wallpaper 1 screen)
-# exec_always feh --bg-fill ~/.local/share/wallpapers/$(shuf -i1-$wallpaper-num -n1).*
-
-# SHUFFLE (screens and wallpaper 2 screens)
-# exec_always bash ~/.screenlayout/layout.sh && feh --bg-fill ~/.local/share/wallpapers/$(shuf -i1-$wallpaper-num -n1).* ~/.local/share/wallpapers/$(shuf -i1-$wallpaper-num -n1).*
-exec_always bash ~/.screenlayout/layout2.sh
-
-# Get POTD form bing  
-# locales: ar-XA, bg-BG, cs-CZ, da-DK, de-AT, de-CH, de-DE, el-GR, en-AU, en-CA, en-GB, en-ID, en-IE, en-IN, en-MY, en-NZ, en-PH, en-SG, en-US, en-XA, en-ZA, es-AR, es-CL, es-ES, es-MX, es-US, es-XL, et-EE, fi-FI, fr-BE, fr-CA, fr-CH, fr-FR, he-IL, hr-HR, hu-HU, it-IT, ja-JP, ko-KR, lt-LT, lv-LV, nb-NO, nl-BE, nl-NL, pl-PL, pt-BR, pt-PT, ro-RO, ru-RU, sk-SK, sl-SL, sv-SE, th-TH, tr-TR, uk-UA, zh-CN, zh-HK, zh-TW
-# exec ~/.config/i3/scripts/potd.py -r 1920x1080 -l en-US -n
-
-
-# activate vpn
-exec nmcli con up id 'ProtonVPN Netherlands 1'
-
-# langauges
-exec_always setxkbmap -layout us,gr;exec xkb-switch -s us;
-bindsym $sup+Shift+z exec xkb-switch -n
-
 # Screenshot
 bindsym --release $sup+Shift+p exec escrotum -s ~/Media/Pictures/Screenshots/Screenshot_%Y%m%d_%H%M%S.png
 bindsym --release $sup+p exec escrotum -s -C
 
+# Assingments
 
-# applications
-# exec --no-startup-id i3-msg '$ws10, move workspace to output secondary'
+# assign [class="Firefox"] $ws1
+# assign [class="konsole"] $ws2
+# assign [class="korganizer"] $ws7
+
+# Editors
+assign [class="Sublime_text"] $ws3
+assign [class="VSCodium"] $ws3
+
+# File Explorer
+assign [class="dolphin"] $ws4
+
+# Messengers
+assign [class="[Dd]iscord"] $ws8
+assign [class="Viber"] $ws8
+
+# Music
+assign [class="[Ss]potify"] $ws9
+
+# Keepass
+assign [class="keepassxc"] $ws10
+
+# Askpass floating window
+for_window [class="ssh-askpass"] floating enable
+
+# window colors
+#						border				background			text					indicator
+client.focused			$bg-color			$bg-color			$text-color				#00006D
+client.unfocused		$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#00006D
+client.focused_inactive $inactive-bg-color	$inactive-bg-color	$inactive-text-color	#00006D
+client.urgent $urgent-bg-color				$urgent-bg-color	$text-color				#00ff00
+
+# Set the displays to the correct layout
+exec_always bash ~/.screenlayout/layout2.sh
+
+# Set the wallpaper to the previous one
+exec_always --no-startup-id ~/.config/i3/scripts/setWal.py
+
+# Launch Polybar
+exec_always --no-startup-id ~/.config/i3/polybar/launch_main_2.sh
+
+# Kill compton if it's running and start it again
+exec_always --no-startup-id killall compton && dbus-launch compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
+
+# Activate vpn
+exec --no-startup-id echo "nl2" > ~/.config/i3/logs/vpnNum.log && python ~/.config/i3/scripts/ip.py changeCustom &
+
+# Langauges
+exec_always setxkbmap -layout us,gr;exec xkb-switch -s us;
+bindsym $sup+Shift+z exec xkb-switch -n
+
+# Start the applications
 # exec --no-startup-id viber
-exec --no-startup-id keepassxc
-# exec --no-startup-id i3-msg 'workspace $ws2; exec konsole'
 # exec --no-startup-id i3-msg 'workspace $ws9; exec spotify'
-exec --no-startup-id firefox -P Default
+exec --no-startup-id i3-msg '$ws10, move workspace to output secondary; exec keepassxc'
 exec --no-startup-id megasync
 
-# exit i3 (logs you out of your X session)
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you want to exit i3?' -B 'Yes' 'i3-msg exit'"
+exec --no-startup-id firefox -P Default
 
-
-# Exit Prompt 
+# Exit Prompt
 set $Locker i3lock-fancy-rapid 5 5 && sleep 1; exec xkb-switch -s us
-
-# set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 set $mode_system System (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
-
 set $mod_def mode default; exec ~/.config/i3/scripts/red-screen.sh off;
 set $exec_red_screen exec ~/.config/i3/scripts/red-screen.sh on;
 
 mode "$mode_system" {
-    bindsym l $mod_def exec --no-startup-id $Locker, mode "default"
-    bindsym e $mod_def exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s $mod_def exec --no-startup-id $Locker && systemctl suspend, mode "default"
-#    bindsym h $mod_def exec --no-startup-id $Locker && systemctl hibernate, mode "default"
-    bindsym r $mod_def exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s $mod_def exec --no-startup-id systemctl poweroff -i, mode "default"  
+	bindsym l $mod_def exec --no-startup-id $Locker, mode "default"
+	bindsym e $mod_def exec --no-startup-id i3-msg exit, mode "default"
+	bindsym s $mod_def exec --no-startup-id $Locker && systemctl suspend, mode "default"
+	bindsym r $mod_def exec --no-startup-id systemctl reboot, mode "default"
+	bindsym Shift+s $mod_def exec --no-startup-id systemctl poweroff -i, mode "default"  
 
-    # back to normal: Enter or Escape
-    bindsym Return $mod_def mode "default"
-    bindsym Escape $mod_def mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return $mod_def mode "default"
+	bindsym Escape $mod_def mode "default"
 }
 
 bindsym $mod+Shift+e mode "$mode_system"; $exec_red_screen;
-
-# Tint the screen
-bindsym $sup+Shift+v exec ~/.config/i3/scripts/tintScreen.sh 1;
-bindsym $sup+Shift+b exec ~/.config/i3/scripts/tintScreen.sh 2;
-bindsym $sup+Shift+n exec ~/.config/i3/scripts/tintScreen.sh 3;

@@ -1,0 +1,33 @@
+#! /bin/sh
+
+# Start sxhkd for hotkeys
+sxhkd &
+
+# Set monitor layout
+~/.screenlayout/layout2.sh &
+
+# Start polybar
+~/.config/i3/scripts/setWal.py &
+~/.config/i3/polybar/launch_bspwm.sh &
+
+# Start compoton
+compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log &
+
+# Set the monitors
+bspc monitor HDMI-1 -d 1 2 3 4 5 6 7 8 9 0
+bspc monitor DVI-D-1 -d 1 2 3 4 5 6 7 8 9 0
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a keepassxc desktop='^0' state=floating follow=on
+bspc rule -a mplayer2 state=floating
+bspc rule -a Screenkey manage=off
+
+# Start misc programs
+# keepassxc &
+megasync &

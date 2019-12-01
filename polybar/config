@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Mon Oct 28 2019
+# Last Modified: Sun Dec 01 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -15,8 +15,10 @@
 include-file = ~/.config/i3/polybar/global.conf
 include-file = ~/.config/i3/polybar/bars/top.conf
 include-file = ~/.config/i3/polybar/bars/bottom.conf
-include-file = ~/.config/i3/polybar/bars/simple.conf
-include-file = ~/.config/i3/polybar/bars/monitor2.conf
+include-file = ~/.config/i3/polybar/bars/main_1.conf
+include-file = ~/.config/i3/polybar/bars/main_2.conf
+include-file = ~/.config/i3/polybar/bars/bsp_mon_1.conf
+include-file = ~/.config/i3/polybar/bars/bsp_mon_2.conf
 
 [colors]
 # adapta-cyan = #00BCD4
@@ -664,3 +666,73 @@ label-mounted-background = ${colors.background}
 label-mounted-padding = 1
 label-mounted-foreground = ${colors.foreground}
 label-mounted-underline = ${colors.background-alt}
+
+
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; Default: true
+pin-workspaces = true
+
+; Output mode flags after focused state label
+; Default: false
+inline-mode = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+format = <label-state>
+
+label-focused = %icon%
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-padding = 2
+label-focused-underline = ${colors.background-alt}
+
+label-unfocused = %icon%
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-padding = 2
+label-unfocused-underline = ${colors.background}
+
+label-urgent = !%icon%
+label-urgent-background = ${colors.background}
+label-urgent-foreground = ${colors.adapta-red}
+label-urgent-padding = 3
+label-urgent-underline = ${colors.adapta-red}
+
+# label-visible = %output%
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.foreground}
+label-visible-padding = 2
+label-visible-underline = ${colors.background}
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+ws-icon-default = 
