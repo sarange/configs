@@ -4,7 +4,7 @@
 # Created Date: Monday, June 17th 2019, 12:29:02 am
 # Author: sarange
 # -----
-# Last Modified: Sun Dec 01 2019
+# Last Modified: Mon Dec 02 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -139,15 +139,20 @@ bar-progress-empty-foreground = ${colors.foreground}
 [module/date]
 type = internal/date
 interval = 5
-date = " %a %d %b,"
-date-alt = " %d/%m/%y"
+format = "<label>"
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix=" "
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-underline = ${colors.background-alt}
+format-padding = 1
+
+date = "%a %d %b,"
+date-alt = "%d/%m/%y"
 time = "%H:%M"
-time-alt = " %H:%M"
+time-alt = "%H:%M"
 label = "%date% %time%"
-label-background = ${colors.background}
-label-foreground = ${colors.foreground}
-label-underline = ${colors.background-alt}
-label-padding = 1
+
 
 [module/alsa]
 type = internal/alsa
@@ -224,6 +229,8 @@ type = custom/menu
 format-spacing = 1
 
 label-open = 
+label-open-foreground = ${colors.foreground-alt}
+
 label-close = 
 label-close-foreground = ${colors.foreground-alt}
 label-separator = |
@@ -237,6 +244,7 @@ menu-0-2 = 
 menu-0-2-exec = i3lock-fancy-rapid 5 5 && sleep 1 && systemctl suspend
 menu-0-3 = 
 menu-0-3-exec = systemctl poweroff
+menu-0-3-foreground = #f00
 
 
 format-background = ${colors.background}
@@ -261,12 +269,27 @@ format-underline = ${colors.background-alt}
 [module/hostname]
 type = custom/script
 interval = 256
-format = "<label> "
-format-prefix = " "
+format = "<label>"
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-padding = 1
 format-background = ${colors.background}
+format-underline = ${colors.background-alt}
+
 exec = echo "$(uname -n)"
+
+[module/kernel]
+type = custom/script
+interval = 256
+format = "<label>"
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-padding = 1
+format-background = ${colors.background}
+format-underline = ${colors.background-alt}
+
+exec = echo "$(uname -r | cut -d "-" -f 1-2)"
+
 
 [module/temperature]
 type = internal/temperature
@@ -299,24 +322,26 @@ units = false
 ; Available tags:
 ;   <label> (default)
 ;   <ramp>
-format = "<label> "
-
+format = "<label>"
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 ; Available tags:
 ;   <label-warn> (default)
 ;   <ramp>
 format-warn = "<label-warn> "
+fromat-warn-prefix = " "
+format-warn-prefix-foreground = #f00
+; Available tokens:
+;   %temperature% (deprecated)
+;   %temperature-c%   (default, temperature in °C)
+;   %temperature-f%   (temperature in °F)
+label = "%temperature-c%"
 
 ; Available tokens:
 ;   %temperature% (deprecated)
 ;   %temperature-c%   (default, temperature in °C)
 ;   %temperature-f%   (temperature in °F)
-label = " %temperature-c%"
-
-; Available tokens:
-;   %temperature% (deprecated)
-;   %temperature-c%   (default, temperature in °C)
-;   %temperature-f%   (temperature in °F)
-label-warn = " %temperature-c%"
+label-warn = "%temperature-c%"
 label-warn-foreground = #f00
 
 ; Requires the <ramp> tag
@@ -328,10 +353,10 @@ ramp-1 = B
 ramp-2 = C
 ramp-foreground = #55
 
-label-background = ${colors.background}
-label-padding = 1
-label-foreground = ${colors.foreground}
-label-underline = ${colors.background-alt}
+format-background = ${colors.background}
+format-padding = 1
+format-foreground = ${colors.foreground}
+format-underline = ${colors.background-alt}
 
 [module/pkg]
 type = custom/script
@@ -363,8 +388,9 @@ interval = 2
 ;   <ramp-swap-used>
 ;   <ramp-swap-free>
 # format = " <bar-used>  <ramp-swap-used>"
-format = " <bar-used>"
-
+format = "<bar-used>"
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 ramp-swap-used-0 = ▁
 ramp-swap-used-1 = ▂
 ramp-swap-used-2 = ▃
@@ -475,13 +501,16 @@ click-right = python ~/.config/i3/scripts/spotify.py next
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 format-underline = ${colors.background-alt}
+format-prefix-foreground = ${colors.foreground-alt}
 format-padding = 1
 label = %output%
 
 [module/cpu-graph]
 type = internal/cpu
 interval = 0.08
-format = " <ramp-coreload>"
+format = "<ramp-coreload>"
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 format-margin = ${margin.for-modules}
 ramp-coreload-0 = ▁
 ramp-coreload-0-foreground = ${colors.foreground}
@@ -508,6 +537,7 @@ format-padding = 1
 [module/keymap]
 type = custom/script
 format-prefix = "  "
+format-prefix-foreground = ${colors.foreground-alt}
 format = "<label>"
 click-left = xkb-switch -n
 exec = bash -c "xkb-switch"
@@ -520,6 +550,7 @@ format-underline = ${colors.background-alt}
 [module/uptime]
 type = custom/script
 format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 format = <label>
 exec = python ~/.config/i3/scripts/uptime.py
 interval = 30
@@ -645,7 +676,12 @@ mount-1 = /home
 ;   <bar-used>
 ;   <ramp-capacity>
 format-mounted = <label-mounted>
-
+format-mounted-prefix = " "
+format-mounted-prefix-foreground = ${colors.foreground-alt}
+format-mounted-background = ${colors.background}
+format-mounted-padding = 1
+format-mounted-foreground = ${colors.foreground}
+format-mounted-underline = ${colors.background-alt}
 ; Available tags:
 ;   <label-unmounted> (default)
 # format-unmounted = <label-unmounted>
@@ -660,12 +696,8 @@ format-mounted = <label-mounted>
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted = " %mountpoint%: %percentage_used%%"
+label-mounted = "%fsname%: %percentage_used%%"
 
-label-mounted-background = ${colors.background}
-label-mounted-padding = 1
-label-mounted-foreground = ${colors.foreground}
-label-mounted-underline = ${colors.background-alt}
 
 
 [module/bspwm]

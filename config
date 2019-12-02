@@ -4,7 +4,7 @@
 # Created Date: Wednesday, July 17th 2019, 12:05:31 am
 # Author: sarange
 # -----
-# Last Modified: Sun Dec 01 2019
+# Last Modified: Mon Dec 02 2019
 # Modified By: sarange
 # -----
 # Copyright (c) 2019 sarange
@@ -211,7 +211,7 @@ assign [class="Viber"] $ws8
 assign [class="[Ss]potify"] $ws9
 
 # Keepass
-assign [class="keepassxc"] $ws10
+assign [class="(keepassxc|KeePassXC)"] $ws10
 
 # Askpass floating window
 for_window [class="ssh-askpass"] floating enable
@@ -233,7 +233,8 @@ exec_always --no-startup-id ~/.config/i3/scripts/setWal.py
 exec_always --no-startup-id ~/.config/i3/polybar/launch_main_2.sh
 
 # Kill compton if it's running and start it again
-exec_always --no-startup-id killall compton && dbus-launch compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
+exec_always --no-startup-id killall compton 
+exec_always --no-startup-id dbus-launch compton --config ~/.config/i3/compton.conf 2>> ~/.config/i3/logs/compton.log
 
 # Activate vpn
 exec --no-startup-id echo "nl2" > ~/.config/i3/logs/vpnNum.log && python ~/.config/i3/scripts/ip.py changeCustom &
@@ -245,7 +246,7 @@ bindsym $sup+Shift+z exec xkb-switch -n
 # Start the applications
 # exec --no-startup-id viber
 # exec --no-startup-id i3-msg 'workspace $ws9; exec spotify'
-exec --no-startup-id i3-msg '$ws10, move workspace to output secondary; exec keepassxc'
+exec --no-startup-id keepassxc
 exec --no-startup-id megasync
 
 exec --no-startup-id firefox -P Default
